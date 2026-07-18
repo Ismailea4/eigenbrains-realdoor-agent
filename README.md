@@ -35,6 +35,27 @@ Our three-stage pipeline focuses on extraction accuracy, deterministic math, and
 
 ---
 
+## 📂 Repository Structure
+
+```text
+realdoor-readiness-copilot/
+├── frontend/                  # 🎨 OWNED BY THE FRONTEND TEAM (LOVABLE GENERATED)
+├── backend/                   # ⚙️ OWNED BY THE BACKEND TEAM
+│   ├── app/
+│   │   ├── schemas/           # Pydantic models for strict type & validation enforcement
+│   │   ├── services/          # Core algorithmic logic (Isolated by engineer domain)
+│   │   └── core/              # Configuration and security logic
+│   └── requirements.txt       # Backend dependencies
+├── data/                      # 📦 ORGANIZER PACK STORAGE
+│   ├── rule_corpus/           # Frozen 2026 MTSP tables and guidelines
+│   └── synthetic_docs/        # Evaluation PDFs/images provided by organizers
+├── .env.example               # Template for environment variables
+├── .gitignore
+└── README.md
+```
+
+---
+
 ## 🛠️ Technology Stack
 
 * **Frontend / UI:** [Insert Framework, e.g., Lovable / Next.js / Streamlit] - *WCAG 2.2 AA Compliant*
@@ -83,6 +104,12 @@ OPENAI_API_KEY=your_api_key_here
 
 5. **Run the application:**
 
-```bash
-# Add specific run command here, e.g., streamlit run app.py
-```
+
+
+
+## 🏗️ Architecture & Constraints
+
+- **Strict Type Safety:** Pydantic v2 models are enforced for all payloads.
+- **Stateless:** Ephemeral processing with isolated user sessions.
+- **No Decisioning:** The engine only provides application readiness assistance, never final eligibility logic.
+- **Deterministic Math:** Pure Python calculations are used for financial validations.
