@@ -7,3 +7,26 @@ It is designed to be high-performance, stateless, and strictly typed.
 ## Structure
 - `app/`: The main application module containing the core logic, schemas, and API routes.
 - `requirements.txt`: Python package dependencies.
+
+## Runtime
+
+The project is pinned to **Python 3.11** via the root `.python-version` file.
+
+```powershell
+C:\Users\PC\AppData\Local\Programs\Python\Python311\python.exe -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r backend\requirements.txt
+```
+
+For raster-only PDFs, install the Tesseract executable and make `tesseract`
+available on `PATH`. The parser raises a typed `OCRUnavailableError` if OCR is
+required but unavailable; it never guesses from an unreadable page.
+
+Run document extraction tests from the repository root:
+
+```powershell
+.\.venv\Scripts\python.exe -m unittest discover -s backend\tests -v
+```
+
+The extraction response includes both an auditable flat `fields` collection
+and a document-specific `structured_data` object. Every structured leaf keeps
+its confidence, source box, and unconfirmed/non-reusable review state.

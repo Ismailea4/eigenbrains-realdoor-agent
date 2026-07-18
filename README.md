@@ -61,7 +61,11 @@ realdoor-readiness-copilot/
 * **Frontend / UI:** [Insert Framework, e.g., Lovable / Next.js / Streamlit] - *WCAG 2.2 AA Compliant*
 * **Backend & Data Pipeline:** Python
 * **Language Models:** OpenAI API (Strictly prompted for rule retrieval and safe deflections)
-* **Document Parsing:** [Insert PDF/OCR parsing tool]
+* **Document Parsing:** PyMuPDF for grounded text/source geometry, with an
+  optional Tesseract OCR adapter for raster-only PDFs. Responses include
+  document-specific structured data whose leaves retain confidence and source
+  evidence.
+* **Backend Runtime:** Python 3.11 (pinned by `.python-version`).
 
 ---
 
@@ -69,7 +73,9 @@ realdoor-readiness-copilot/
 
 * **No Decisioning:** Defensive system prompts gracefully deflect "Am I eligible?" queries to the authoritative rule text.
 * **Prompt-Injection Resistance:** Strict input sanitization and bounded conversational scopes.
-* **Zero Retention:** Uploads are not used for training; local sessions are fully ephemeral.
+* **Ephemeral App Processing:** The parser processes bytes in memory and does
+  not persist uploads. Provider-side retention must be described separately if
+  a hosted model is later added.
 * **No Hidden Proxies:** Zero inference of protected traits or demographic features.
 
 ---
@@ -85,14 +91,14 @@ realdoor-readiness-copilot/
 2. **Set up the virtual environment:**
 
 ```bash
-python -m venv venv
-source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+C:\Users\PC\AppData\Local\Programs\Python\Python311\python.exe -m venv .venv
+.\.venv\Scripts\Activate.ps1
 ```
 
 3. **Install dependencies:**
 
 ```bash
-pip install -r requirements.txt
+python -m pip install -r backend\requirements.txt
 ```
 
 4. **Configure environment variables:**
@@ -103,6 +109,12 @@ OPENAI_API_KEY=your_api_key_here
 ```
 
 5. **Run the application:**
+
+Document parser tests can be run before API integration:
+
+```powershell
+python -m unittest discover -s backend\tests -v
+```
 
 
 
