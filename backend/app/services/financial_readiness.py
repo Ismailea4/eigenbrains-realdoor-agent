@@ -41,6 +41,12 @@ EXPECTED_POLICY_SHA256 = "3d68e8c46541491a8007947ad2d79091d39cb4253c4256132fee4f
 RATIO_PLACES = Decimal("0.0001")
 
 
+def canonical_policy_bytes(policy_bytes: bytes) -> bytes:
+    """Normalize Git-managed line endings before verifying policy integrity."""
+
+    return policy_bytes.replace(b"\r\n", b"\n")
+
+
 class RiskPolicyIntegrityError(RuntimeError):
     """The versioned financial-readiness policy is missing or changed."""
 
@@ -134,7 +140,10 @@ class FinancialReadinessEngine:
             policy_bytes = self.policy_path.read_bytes()
         except OSError as exc:
             raise RiskPolicyIntegrityError("Risk policy is unavailable") from exc
-        if hashlib.sha256(policy_bytes).hexdigest() != EXPECTED_POLICY_SHA256:
+        if (
+            hashlib.sha256(canonical_policy_bytes(policy_bytes)).hexdigest()
+            != EXPECTED_POLICY_SHA256
+        ):
             raise RiskPolicyIntegrityError("Risk policy checksum mismatch")
         try:
             return _RiskPolicy.model_validate(json.loads(policy_bytes.decode("utf-8")))

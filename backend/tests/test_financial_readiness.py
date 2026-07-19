@@ -35,6 +35,7 @@ from backend.app.services.financial_readiness import (
     EXPECTED_POLICY_SHA256,
     FinancialReadinessEngine,
     RiskPolicyIntegrityError,
+    canonical_policy_bytes,
 )
 
 
@@ -414,7 +415,7 @@ class FinancialReadinessTests(unittest.TestCase):
         import hashlib
 
         self.assertEqual(
-            hashlib.sha256(POLICY_PATH.read_bytes()).hexdigest(),
+            hashlib.sha256(canonical_policy_bytes(POLICY_PATH.read_bytes())).hexdigest(),
             EXPECTED_POLICY_SHA256,
         )
         with tempfile.TemporaryDirectory(dir=ROOT) as temporary_directory:
@@ -428,7 +429,13 @@ class FinancialReadinessTests(unittest.TestCase):
     def test_api_routes_expose_typed_policy_and_evaluation(self) -> None:
         route_paths = {route.path for route in app.routes}
         self.assertTrue(
-            {"/renter-budget/policy", "/renter-budget/evaluate"}
+            {
+                "/renter-budget/policy",
+                "/renter-budget/evaluate",
+                "/financial-readiness/policy",
+                "/financial-readiness/evaluate",
+                "/documents/extract",
+            }
             <= route_paths
         )
         original = journey_service.renter_budget_enabled

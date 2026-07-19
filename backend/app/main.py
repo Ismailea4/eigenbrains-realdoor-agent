@@ -116,6 +116,11 @@ def get_global_aggregate() -> GlobalAggregateResponse:
     return GlobalAggregateResponse.model_validate(run_pipeline())
 
 
+@app.get(
+    "/financial-readiness/policy",
+    response_model=RiskPolicySummary,
+    include_in_schema=False,
+)
 @app.get("/renter-budget/policy", response_model=RiskPolicySummary)
 def get_renter_budget_policy() -> RiskPolicySummary:
     """Expose the optional renter-only budgeting policy when enabled."""
@@ -125,6 +130,11 @@ def get_renter_budget_policy() -> RiskPolicySummary:
     return financial_readiness_engine.policy
 
 
+@app.post(
+    "/financial-readiness/evaluate",
+    response_model=FinancialReadinessResponse,
+    include_in_schema=False,
+)
 @app.post("/renter-budget/evaluate", response_model=FinancialReadinessResponse)
 def evaluate_renter_budget(
     request: FinancialReadinessRequest,
@@ -136,6 +146,11 @@ def evaluate_renter_budget(
     return financial_readiness_engine.evaluate(request)
 
 
+@app.post(
+    "/documents/extract",
+    response_model=DocumentExtraction,
+    include_in_schema=False,
+)
 @app.post("/upload/extract", response_model=DocumentExtraction)
 async def upload_extract(file: UploadFile = File(...)) -> DocumentExtraction:
     """Extract structured data and evidence from a synthetic PDF."""
