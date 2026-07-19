@@ -1,0 +1,17 @@
+[
+  {
+    "document_id": "HH-001-D02",
+    "document_type": "pay_stub",
+    "llm_raw": "{\n  \"potential_issues\": [\n    \"The income verification for Mara North needs to be assessed to determine if it meets the required income limits for the applicable occupancy test.\"\n  ],\n  \"relevant_rules\": [\n    {\n      \"title\": \"Annual Income Verification\",\n      \"page\": 6\n    },\n    {\n      \"title\": \"40-60 Occupancy Test\",\n      \"page\": 5\n    },\n    {\n      \"title\": \"20-50 Occupancy Test\",\n      \"page\": 5\n    }\n  ],\n  \"explanation\": \"Mara North's gross pay of $2,166.00 needs to be evaluated against the Area Median Gross Income (AMGI) to ensure compliance with the occupancy tests. If her income exceeds the specified limits for the occupancy test applicable to the project, it may affect the project's compliance status.\"\n}"
+  },
+  {
+    "document_id": "HH-003-D02",
+    "document_type": "pay_stub",
+    "llm_raw": "{\n  \"potential_issues\": [\n    \"The income verification for Avery Moss needs to be assessed to determine if it meets the required income limits for the occupancy tests.\"\n  ],\n  \"relevant_rules\": [\n    {\n      \"title\": \"Annual Income Verification\",\n      \"page\": 6\n    },\n    {\n      \"title\": \"20-50 Occupancy Test\",\n      \"page\": 5\n    },\n    {\n      \"title\": \"40-60 Occupancy Test\",\n      \"page\": 5\n    }\n  ],\n  \"explanation\": \"Avery Moss's gross pay of $1,155.00 for the pay period needs to be evaluated against the Area Median Gross Income (AMGI) to determine if it qualifies under the 20-50 or 40-60 occupancy tests. The annual income verification rule requires that tenant income is determined at least annually, which is crucial for compliance.\"\n}"
+  },
+  {
+    "document_id": "HH-003-D04",
+    "document_type": "benefit_letter",
+    "llm_raw": "{\n  \"potential_issues\": [\n    \"The monthly benefit of $850 may exceed the income limit for low-income housing, depending on the Area Median Gross Income (AMGI) for the relevant area.\"\n  ],\n  \"relevant_rules\": [\n    {\n      \"title\": \"Annual Income Verification\",\n      \"page\": 6\n    },\n    {\n      \"title\": \"Deep Rent Gross Rent Limit\",\n      \"page\": 7\n    },\n    {\n      \"title\": \"Next Available Unit Rule\",\n      \"page\": 11\n    }\n  ],\n  \"explanation\": \"The document indicates that Avery Moss receives a monthly benefit of $850. To determine compliance with low-income housing requirements, it is necessary to verify if this amount, when annualized, exceeds the applicable income limits based on the Area Median Gross Income (AMGI). If it does exceed the limit, it could affect eligibility for low-income housing and trigger the Next Available Unit Rule.\"\n}"
+  }
+]

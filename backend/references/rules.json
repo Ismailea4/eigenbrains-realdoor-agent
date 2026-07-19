@@ -1,0 +1,127 @@
+[
+  {
+    "title": "20-50 Occupancy Test",
+    "rule": "At least 20% of residential units must be occupied by individuals or families whose income is at or below 50% of the Area Median Gross Income (AMGI).",
+    "page": 5
+  },
+  {
+    "title": "40-60 Occupancy Test",
+    "rule": "At least 40% of residential units must be occupied by individuals or families whose income is at or below 60% of the Area Median Gross Income (AMGI).",
+    "page": 5
+  },
+  {
+    "title": "Qualified Project Period",
+    "rule": "A project must satisfy the selected occupancy test throughout the qualified project period.",
+    "page": 5
+  },
+  {
+    "title": "Annual Income Verification",
+    "rule": "Tenant income must be determined at least annually.",
+    "page": 6
+  },
+  {
+    "title": "Existing Tenant Income Increase",
+    "rule": "A tenant who initially qualified remains qualified unless income exceeds 140% of the applicable income limit and the next available comparable unit is rented to an over-income tenant.",
+    "page": 6
+  },
+  {
+    "title": "Deep Rent Skewed Threshold",
+    "rule": "For deep rent skewed projects, the threshold increases from 140% to 170% of the applicable income limit.",
+    "page": 7
+  },
+  {
+    "title": "Deep Rent Skewed Requirement",
+    "rule": "At least 15% of low-income units must be occupied by households earning 40% or less of the Area Median Gross Income.",
+    "page": 7
+  },
+  {
+    "title": "Deep Rent Gross Rent Limit",
+    "rule": "Gross rent for each low-income unit must not exceed 30% of the applicable income limit.",
+    "page": 7
+  },
+  {
+    "title": "Comparable Rent Rule",
+    "rule": "Gross rent for each low-income unit must not exceed one-half of the average gross rent of comparable unrestricted units.",
+    "page": 7
+  },
+  {
+    "title": "Annual Project Certification",
+    "rule": "Project operators must submit an annual certification confirming continued compliance.",
+    "page": 8
+  },
+  {
+    "title": "Rent Restricted Unit",
+    "rule": "Gross rent must not exceed 30% of the applicable imputed income limitation.",
+    "page": 9
+  },
+  {
+    "title": "Income Increase Treatment",
+    "rule": "A unit remains a low-income unit if occupants originally qualified and the unit continues to be rent restricted.",
+    "page": 11
+  },
+  {
+    "title": "Next Available Unit Rule",
+    "rule": "If tenant income exceeds 140% of the limit, the next available comparable unit must be rented to a qualifying low-income household.",
+    "page": 11
+  },
+  {
+    "title": "Building Qualification Deadline",
+    "rule": "A project must satisfy the low-income housing requirements by the end of the first year of the credit period.",
+    "page": 12
+  },
+  {
+    "title": "Scattered Site Projects",
+    "rule": "Buildings may be treated as a single project if all dwelling units are rent-restricted.",
+    "page": 13
+  },
+  {
+    "title": "Annual Recertification Waiver",
+    "rule": "The Secretary may waive annual tenant income recertification if the entire building is occupied by low-income tenants.",
+    "page": 13
+  },
+  {
+    "title": "MTSP Income Limit Hold Harmless",
+    "rule": "For non-impacted MTSPs, the income limit may never decline and is the highest value reached during the project's qualifying period.",
+    "page": 3
+  },
+  {
+    "title": "MTSP 60% Income Limit",
+    "rule": "The MTSP 60% income limit is calculated as 1.2 times the MTSP Very Low-Income Limit (VLIL).",
+    "page": 3
+  },
+  {
+    "title": "Impacted Project VLIL",
+    "rule": "For HUD impacted projects, VLIL equals the greater of the previous impacted VLIL or the FY2008 VLIL adjusted by median family income growth.",
+    "page": 4
+  },
+  {
+    "title": "Hold Harmless After 2008",
+    "rule": "Area Median Gross Income for MTSP projects after 2008 may not be lower than the previous year's determination.",
+    "page": 17
+  },
+  {
+    "title": "Four-Person Income Limit",
+    "rule": "HUD initially sets the four-person very low-income limit at 50% of Area Median Family Income before applying statutory adjustments.",
+    "page": 18
+  },
+  {
+    "title": "High Housing Cost Adjustment",
+    "rule": "HUD increases very low-income limits when rental housing costs are unusually high relative to median family income.",
+    "page": 18
+  },
+  {
+    "title": "High Income Area Adjustment",
+    "rule": "HUD reduces very low-income limits in unusually high-income areas subject to statutory minimums.",
+    "page": 18
+  },
+  {
+    "title": "Nonmetropolitan Minimum",
+    "rule": "Income limits may not be lower than the state's nonmetropolitan median family income level.",
+    "page": 19
+  },
+  {
+    "title": "Annual Increase Cap",
+    "rule": "For FY2026, annual income limit increases are capped at 10%.",
+    "page": 19
+  }
+]
