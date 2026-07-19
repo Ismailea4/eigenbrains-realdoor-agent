@@ -116,9 +116,6 @@ Document parser tests can be run before API integration:
 python -m unittest discover -s backend\tests -v
 ```
 
-
-
-
 ## 🏗️ Architecture & Constraints
 
 - **Strict Type Safety:** Pydantic v2 models are enforced for all payloads.
