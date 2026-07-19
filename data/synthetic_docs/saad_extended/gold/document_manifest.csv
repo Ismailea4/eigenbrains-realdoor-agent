@@ -1,0 +1,10 @@
+document_id,household_id,document_type,file_name,rasterized,contains_adversarial_text,design_reference,synthetic_notice,fixture_source
+SAAD-101-D01,SAAD-101,application_summary,saad-101_d01_application_summary.pdf,False,False,RealDoor organizer application-summary schema,SYNTHETIC - NOT A REAL DOCUMENT,saad_extended
+SAAD-101-D02,SAAD-101,pay_stub,saad-101_d02_pay_stub.pdf,False,False,IRS sample pay-stub tables; FDIC Money Smart example earnings and leave statement,SYNTHETIC - NOT A REAL DOCUMENT,saad_extended
+SAAD-102-D01,SAAD-102,benefit_letter,saad-102_d01_benefit_letter.pdf,False,False,SSA sample online benefit verification letter,SYNTHETIC - NOT A REAL DOCUMENT,saad_extended
+SAAD-103-D01,SAAD-103,employment_letter,saad-103_d01_employment_letter.pdf,False,False,HUD Verification of Employment form (HOME Program),SYNTHETIC - NOT A REAL DOCUMENT,saad_extended
+SAAD-104-D01,SAAD-104,pay_stub,saad-104_d01_pay_stub_raster.pdf,True,True,IRS sample pay-stub tables; FDIC Money Smart example earnings and leave statement,SYNTHETIC - NOT A REAL DOCUMENT,saad_extended
+SAAD-105-D01,SAAD-105,rent_statement,saad-105_d01_property_rent_statement.pdf,False,False,Massachusetts summary-process account-annexed fields and HUD tenant-ledger guidance,SYNTHETIC - NOT A REAL DOCUMENT,saad_extended
+SAAD-106-D01,SAAD-106,bank_deposit_statement,saad-106_d01_bank_deposit_statement.pdf,False,False,CFPB periodic-statement guidance and FDIC account-register conventions,SYNTHETIC - NOT A REAL DOCUMENT,saad_extended
+SAAD-106-D02,SAAD-106,self_employment_statement,saad-106_d02_self_employment_statement.pdf,False,False,IRS Schedule C and small-business recordkeeping conventions,SYNTHETIC - NOT A REAL DOCUMENT,saad_extended
+SAAD-107-D01,SAAD-107,government_id,saad-107_d01_government_id.pdf,False,False,"Massachusetts RMV standard ID-card information hierarchy; synthetic training design without seal, number, signature, or barcode",SYNTHETIC - NOT A REAL DOCUMENT,saad_extended

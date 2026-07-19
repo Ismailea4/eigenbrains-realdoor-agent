@@ -1,4 +1,4 @@
-"""Public schemas for the backend API."""
+"""Public schema exports for backend services."""
 
 from .calculator import (
     Citation,
@@ -17,14 +17,49 @@ from .calculator import (
     RulesEvaluationResponse,
     ThresholdRow,
 )
+from .profile import (
+    ApplicationSummaryData,
+    BankDepositStatementData,
+    BenefitLetterData,
+    DocumentExtraction,
+    DocumentType,
+    EvidenceRef,
+    EmploymentLetterData,
+    ExtractedField,
+    ExtractionEngine,
+    ExtractionStatus,
+    FieldName,
+    GigStatementData,
+    GovernmentIdData,
+    PayStubData,
+    RentStatementData,
+    SecurityFlag,
+    SelfEmploymentStatementData,
+    StructuredDocumentData,
+)
 
 __all__ = [
+    "ApplicationSummaryData",
+    "BankDepositStatementData",
+    "BenefitLetterData",
     "Citation",
     "Comparison",
     "ConfirmedIncomeInput",
+    "DocumentExtraction",
+    "DocumentType",
+    "EmploymentLetterData",
+    "EvidenceRef",
     "EvidenceReference",
+    "ExtractedField",
+    "ExtractionEngine",
+    "ExtractionStatus",
+    "FieldName",
+    "GigStatementData",
+    "GovernmentIdData",
     "InputCalculationTrace",
+    "PayStubData",
     "ProgramScope",
+    "RentStatementData",
     "ReviewReason",
     "ReviewReasonCode",
     "ReviewStatus",
@@ -33,5 +68,8 @@ __all__ = [
     "RuleQuestionResponse",
     "RulesEvaluationRequest",
     "RulesEvaluationResponse",
+    "SecurityFlag",
+    "SelfEmploymentStatementData",
+    "StructuredDocumentData",
     "ThresholdRow",
 ]

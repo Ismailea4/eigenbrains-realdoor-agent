@@ -1,0 +1,190 @@
+{
+  "document_id": "HH-003-D02",
+  "document_type": "pay_stub",
+  "page_count": 1,
+  "status": "extracted",
+  "structured_data": {
+    "document_type": "pay_stub",
+    "person_name": {
+      "field": "person_name",
+      "value": "Avery Moss",
+      "confidence": 0.99,
+      "evidence": {
+        "page": 1,
+        "bbox": [
+          40.0,
+          657.01,
+          92.23,
+          670.75
+        ],
+        "bbox_units": "pdf_points_bottom_left_origin",
+        "text": "Avery Moss",
+        "engine": "pdf_text",
+        "confidence": 0.99
+      },
+      "confirmed": false,
+      "reusable": false
+    },
+    "pay_date": {
+      "field": "pay_date",
+      "value": "2026-06-27",
+      "confidence": 0.99,
+      "evidence": {
+        "page": 1,
+        "bbox": [
+          330.0,
+          657.01,
+          381.14,
+          670.75
+        ],
+        "bbox_units": "pdf_points_bottom_left_origin",
+        "text": "2026-06-27",
+        "engine": "pdf_text",
+        "confidence": 0.99
+      },
+      "confirmed": false,
+      "reusable": false
+    },
+    "pay_period_start": {
+      "field": "pay_period_start",
+      "value": "2026-06-10",
+      "confidence": 0.99,
+      "evidence": {
+        "page": 1,
+        "bbox": [
+          40.0,
+          607.01,
+          91.14,
+          620.75
+        ],
+        "bbox_units": "pdf_points_bottom_left_origin",
+        "text": "2026-06-10",
+        "engine": "pdf_text",
+        "confidence": 0.99
+      },
+      "confirmed": false,
+      "reusable": false
+    },
+    "pay_period_end": {
+      "field": "pay_period_end",
+      "value": "2026-06-23",
+      "confidence": 0.99,
+      "evidence": {
+        "page": 1,
+        "bbox": [
+          200.0,
+          607.01,
+          251.14,
+          620.75
+        ],
+        "bbox_units": "pdf_points_bottom_left_origin",
+        "text": "2026-06-23",
+        "engine": "pdf_text",
+        "confidence": 0.99
+      },
+      "confirmed": false,
+      "reusable": false
+    },
+    "pay_frequency": {
+      "field": "pay_frequency",
+      "value": "biweekly",
+      "confidence": 0.99,
+      "evidence": {
+        "page": 1,
+        "bbox": [
+          360.0,
+          607.01,
+          398.34,
+          620.75
+        ],
+        "bbox_units": "pdf_points_bottom_left_origin",
+        "text": "biweekly",
+        "engine": "pdf_text",
+        "confidence": 0.99
+      },
+      "confirmed": false,
+      "reusable": false
+    },
+    "regular_hours": {
+      "field": "regular_hours",
+      "value": 60,
+      "confidence": 0.99,
+      "evidence": {
+        "page": 1,
+        "bbox": [
+          52.0,
+          527.01,
+          63.12,
+          540.75
+        ],
+        "bbox_units": "pdf_points_bottom_left_origin",
+        "text": "60",
+        "engine": "pdf_text",
+        "confidence": 0.99
+      },
+      "confirmed": false,
+      "reusable": false
+    },
+    "hourly_rate": {
+      "field": "hourly_rate",
+      "value": 19.25,
+      "confidence": 0.99,
+      "evidence": {
+        "page": 1,
+        "bbox": [
+          190.0,
+          527.01,
+          220.58,
+          540.75
+        ],
+        "bbox_units": "pdf_points_bottom_left_origin",
+        "text": "$19.25",
+        "engine": "pdf_text",
+        "confidence": 0.99
+      },
+      "confirmed": false,
+      "reusable": false
+    },
+    "gross_pay": {
+      "field": "gross_pay",
+      "value": 1155,
+      "confidence": 0.99,
+      "evidence": {
+        "page": 1,
+        "bbox": [
+          340.0,
+          526.41,
+          393.38,
+          542.9
+        ],
+        "bbox_units": "pdf_points_bottom_left_origin",
+        "text": "$1,155.00",
+        "engine": "pdf_text",
+        "confidence": 0.99
+      },
+      "confirmed": false,
+      "reusable": false
+    },
+    "net_pay": {
+      "field": "net_pay",
+      "value": 900.9,
+      "confidence": 0.99,
+      "evidence": {
+        "page": 1,
+        "bbox": [
+          460.0,
+          527.01,
+          496.14,
+          540.75
+        ],
+        "bbox_units": "pdf_points_bottom_left_origin",
+        "text": "$900.90",
+        "engine": "pdf_text",
+        "confidence": 0.99
+      },
+      "confirmed": false,
+      "reusable": false
+    }
+  },
+  "warnings": []
+}
