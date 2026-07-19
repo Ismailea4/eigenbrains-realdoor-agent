@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "corpus_version": "realdoor-boston-mtsp-2026-v1",
+  "frozen_at": "2026-07-18",
+  "runtime_network_access": false,
+  "corpus_path": "../realdoor-hackathon-starter-pack/rules/rule_corpus.jsonl",
+  "corpus_sha256": "4da5bf5d3e6a737627d3d4ece75bbc16617069c25ab23848e2aa222cbc2702af",
+  "program_id": "LIHTC_MTSP_60",
+  "program_name": "Low-Income Housing Tax Credit - HUD MTSP 60% income-limit comparison",
+  "rule_year": 2026,
+  "area": "Boston-Cambridge-Quincy, MA-NH HMFA",
+  "ami_percentage": 60,
+  "threshold_rule_id": "HUD-MTSP-002",
+  "effective_date_rule_id": "HUD-MTSP-001",
+  "income_rule_id": "CH-INCOME-001",
+  "decision_boundary_rule_id": "CH-DECISION-001"
+}

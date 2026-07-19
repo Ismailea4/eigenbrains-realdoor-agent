@@ -30,3 +30,19 @@ Run document extraction tests from the repository root:
 The extraction response includes both an auditable flat `fields` collection
 and a document-specific `structured_data` object. Every structured leaf keeps
 its confidence, source box, and unconfirmed/non-reusable review state.
+
+## Rules API
+
+Run from the repository root with Python 3.11:
+
+```bash
+python -m uvicorn backend.app.main:app --reload
+```
+
+- `GET /rules/scope` returns the single frozen program/year, all eight thresholds,
+  the HUD citation, and effective date.
+- `POST /rules/evaluate` annualizes only renter-confirmed, traceable synthetic inputs.
+- `POST /rules/question` answers allowlisted rule questions with citations and
+  refuses decision requests.
+
+Full contracts and examples are in `docs/rules_and_math.md`.

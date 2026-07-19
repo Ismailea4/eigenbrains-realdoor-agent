@@ -1,5 +1,23 @@
 """Public schema exports for backend services."""
 
+from .calculator import (
+    Citation,
+    Comparison,
+    ConfirmedIncomeInput,
+    EvidenceReference,
+    InputCalculationTrace,
+    ProgramScope,
+    ReviewReason,
+    ReviewReasonCode,
+    ReviewStatus,
+    RuleQuestionIntent,
+    RuleQuestionRequest,
+    RuleQuestionResponse,
+    RulesEvaluationRequest,
+    RulesEvaluationResponse,
+    ThresholdRow,
+)
+
 from .profile import (
     ApplicationSummaryData,
     BankDepositStatementData,
@@ -40,4 +58,19 @@ __all__ = [
     "SecurityFlag",
     "SelfEmploymentStatementData",
     "StructuredDocumentData",
+    "Citation",
+    "Comparison",
+    "ConfirmedIncomeInput",
+    "EvidenceReference",
+    "InputCalculationTrace",
+    "ProgramScope",
+    "ReviewReason",
+    "ReviewReasonCode",
+    "ReviewStatus",
+    "RuleQuestionIntent",
+    "RuleQuestionRequest",
+    "RuleQuestionResponse",
+    "RulesEvaluationRequest",
+    "RulesEvaluationResponse",
+    "ThresholdRow",
 ]

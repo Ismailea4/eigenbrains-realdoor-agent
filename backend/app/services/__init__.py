@@ -9,7 +9,11 @@ from .extractor import (
     extract_documents,
 )
 
+from .rules_engine import CorpusIntegrityError, RulesEngine
+
 __all__ = [
+    "CorpusIntegrityError",
+    "RulesEngine",
     "DocumentExtractionError",
     "NonSyntheticDocumentError",
     "OCRUnavailableError",
