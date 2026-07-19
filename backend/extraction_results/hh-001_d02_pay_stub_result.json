@@ -1,0 +1,190 @@
+{
+  "document_id": "HH-001-D02",
+  "document_type": "pay_stub",
+  "page_count": 1,
+  "status": "extracted",
+  "structured_data": {
+    "document_type": "pay_stub",
+    "person_name": {
+      "field": "person_name",
+      "value": "Mara North",
+      "confidence": 0.96,
+      "evidence": {
+        "page": 1,
+        "bbox": [
+          40.56,
+          659.76,
+          89.28,
+          667.2
+        ],
+        "bbox_units": "pdf_points_bottom_left_origin",
+        "text": "Mara North",
+        "engine": "ocr",
+        "confidence": 0.96
+      },
+      "confirmed": false,
+      "reusable": false
+    },
+    "pay_date": {
+      "field": "pay_date",
+      "value": "2026-06-27",
+      "confidence": 0.95,
+      "evidence": {
+        "page": 1,
+        "bbox": [
+          330.24,
+          659.76,
+          380.64,
+          667.2
+        ],
+        "bbox_units": "pdf_points_bottom_left_origin",
+        "text": "2026-06-27",
+        "engine": "ocr",
+        "confidence": 0.95
+      },
+      "confirmed": false,
+      "reusable": false
+    },
+    "pay_period_start": {
+      "field": "pay_period_start",
+      "value": "2026-06-10",
+      "confidence": 0.96,
+      "evidence": {
+        "page": 1,
+        "bbox": [
+          40.32,
+          609.84,
+          90.72,
+          617.28
+        ],
+        "bbox_units": "pdf_points_bottom_left_origin",
+        "text": "2026-06-10",
+        "engine": "ocr",
+        "confidence": 0.96
+      },
+      "confirmed": false,
+      "reusable": false
+    },
+    "pay_period_end": {
+      "field": "pay_period_end",
+      "value": "2026-06-23",
+      "confidence": 0.96,
+      "evidence": {
+        "page": 1,
+        "bbox": [
+          200.16,
+          609.84,
+          250.56,
+          617.28
+        ],
+        "bbox_units": "pdf_points_bottom_left_origin",
+        "text": "2026-06-23",
+        "engine": "ocr",
+        "confidence": 0.96
+      },
+      "confirmed": false,
+      "reusable": false
+    },
+    "pay_frequency": {
+      "field": "pay_frequency",
+      "value": "biweekly",
+      "confidence": 0.96,
+      "evidence": {
+        "page": 1,
+        "bbox": [
+          360.48,
+          607.92,
+          397.92,
+          617.28
+        ],
+        "bbox_units": "pdf_points_bottom_left_origin",
+        "text": "biweekly",
+        "engine": "ocr",
+        "confidence": 0.97
+      },
+      "confirmed": false,
+      "reusable": false
+    },
+    "regular_hours": {
+      "field": "regular_hours",
+      "value": 76,
+      "confidence": 0.95,
+      "evidence": {
+        "page": 1,
+        "bbox": [
+          52.32,
+          530.16,
+          62.64,
+          537.6
+        ],
+        "bbox_units": "pdf_points_bottom_left_origin",
+        "text": "76",
+        "engine": "ocr",
+        "confidence": 0.95
+      },
+      "confirmed": false,
+      "reusable": false
+    },
+    "hourly_rate": {
+      "field": "hourly_rate",
+      "value": 28.5,
+      "confidence": 0.96,
+      "evidence": {
+        "page": 1,
+        "bbox": [
+          190.32,
+          529.2,
+          220.08,
+          538.08
+        ],
+        "bbox_units": "pdf_points_bottom_left_origin",
+        "text": "$28.50",
+        "engine": "ocr",
+        "confidence": 0.96
+      },
+      "confirmed": false,
+      "reusable": false
+    },
+    "gross_pay": {
+      "field": "gross_pay",
+      "value": 2166,
+      "confidence": 0.95,
+      "evidence": {
+        "page": 1,
+        "bbox": [
+          340.32,
+          528.72,
+          392.88,
+          539.52
+        ],
+        "bbox_units": "pdf_points_bottom_left_origin",
+        "text": "$2,166.00",
+        "engine": "ocr",
+        "confidence": 0.95
+      },
+      "confirmed": false,
+      "reusable": false
+    },
+    "net_pay": {
+      "field": "net_pay",
+      "value": 1689.48,
+      "confidence": 0.96,
+      "evidence": {
+        "page": 1,
+        "bbox": [
+          460.32,
+          528.96,
+          504.0,
+          538.08
+        ],
+        "bbox_units": "pdf_points_bottom_left_origin",
+        "text": "$1,689.48",
+        "engine": "ocr",
+        "confidence": 0.96
+      },
+      "confirmed": false,
+      "reusable": false
+    }
+  },
+  "warnings": []
+}
