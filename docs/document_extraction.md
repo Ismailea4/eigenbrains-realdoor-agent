@@ -25,13 +25,18 @@ The implementation targets Python 3.11.
 | Type | Allowlisted fields |
 |---|---|
 | Application summary | person name, household size, mailing address, application date |
-| Pay stub | person name, pay date/period, frequency, hours, hourly rate, gross pay, net pay |
+| Pay stub | person name, pay date/period, frequency, hours, hourly rate, gross/net pay, YTD gross pay |
 | Employment letter | person name, letter date, hours per week, hourly rate |
-| Benefit letter | person name, letter date, monthly amount, frequency |
+| Benefit letter | person name, letter date, monthly amount, frequency, issuing agency |
 | Gig statement | person name, statement month, gross receipts, platform fees |
 | Property rent statement | tenant, property/address/unit, statement date, lease dates, monthly rent, current balance |
-| Bank deposit statement | account holder, statement period, total deposits |
+| Bank deposit statement | account holder, statement period, total deposits, bank name, ending balance |
 | Self-employment statement | owner/business, statement month, gross receipts, expenses, net business income |
+| Government-issued ID | full legal name, date of birth, expiration date |
+
+Government-ID support deliberately excludes credential numbers, signatures,
+barcodes, machine-readable zones, gender, and physical descriptors. Date of
+birth is returned with `sensitive=true` and remains unconfirmed/non-reusable.
 
 The detailed statement PDFs contain realistic ledger and transaction tables for
 packet preview. Those row descriptions are intentionally not copied into the
@@ -118,7 +123,7 @@ The regression suite verifies Python 3.11, exact values on all 24 organizer
 PDFs when Tesseract is installed, source-box containment for born-digital
 fixtures, prompt-injection isolation, raster abstention, file validation,
 synthetic-only enforcement, deterministic checksums, nested structured output,
-financial consistency warnings, and all eight documents in the Saad extension
+financial consistency warnings, matrix-field coverage, and all nine documents in the Saad extension
 pack. Raster tests are explicitly skipped on machines without Tesseract.
 
 ## Optional model extension

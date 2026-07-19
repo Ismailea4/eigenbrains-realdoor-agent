@@ -15,6 +15,7 @@ References reviewed on 2026-07-18:
 | Bank deposit statement | [CFPB Regulation E periodic-statement requirements](https://www.consumerfinance.gov/rules-policy/regulations/1005/9/), [CFPB checking-account guide](https://files.consumerfinance.gov/f/documents/cfpb_adult-fin-ed_consumer-guide-to-managing-your-checking-account.pdf) | Statement period, beginning/ending balances, deposits, withdrawals and running-balance activity |
 | Property rent statement | [Massachusetts sample summary-process form](https://www.mass.gov/doc/summary-process-eviction-complaint-sample-form/download), [HUD rent-ledger guidance](https://www.hud.gov/sites/documents/HSG-06-01GC5GUID.PDF) | Tenant/property identifiers and dated charge/payment/balance ledger |
 | Self-employment statement | [IRS Publication 583](https://www.irs.gov/publications/p583) | Monthly revenue and expense categories with a reconciled net total |
+| Government ID | [Massachusetts ID requirements](https://www.mass.gov/info-details/massachusetts-identification-id-requirements) | Card hierarchy with photograph area, full legal name, DOB and expiration; all credential identifiers are intentionally omitted |
 
 The visible synthetic notice remains deliberately prominent even though it is
 not part of the reference layouts. This prevents a training fixture from being

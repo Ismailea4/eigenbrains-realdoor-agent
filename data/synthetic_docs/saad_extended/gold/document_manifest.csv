@@ -7,3 +7,4 @@ SAAD-104-D01,SAAD-104,pay_stub,saad-104_d01_pay_stub_raster.pdf,True,True,IRS sa
 SAAD-105-D01,SAAD-105,rent_statement,saad-105_d01_property_rent_statement.pdf,False,False,Massachusetts summary-process account-annexed fields and HUD tenant-ledger guidance,SYNTHETIC - NOT A REAL DOCUMENT,saad_extended
 SAAD-106-D01,SAAD-106,bank_deposit_statement,saad-106_d01_bank_deposit_statement.pdf,False,False,CFPB periodic-statement guidance and FDIC account-register conventions,SYNTHETIC - NOT A REAL DOCUMENT,saad_extended
 SAAD-106-D02,SAAD-106,self_employment_statement,saad-106_d02_self_employment_statement.pdf,False,False,IRS Schedule C and small-business recordkeeping conventions,SYNTHETIC - NOT A REAL DOCUMENT,saad_extended
+SAAD-107-D01,SAAD-107,government_id,saad-107_d01_government_id.pdf,False,False,"Massachusetts RMV standard ID-card information hierarchy; synthetic training design without seal, number, signature, or barcode",SYNTHETIC - NOT A REAL DOCUMENT,saad_extended

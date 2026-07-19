@@ -48,6 +48,10 @@ DESIGN_REFERENCES = {
     "self_employment_statement": (
         "IRS Schedule C and small-business recordkeeping conventions"
     ),
+    "government_id": (
+        "Massachusetts RMV standard ID-card information hierarchy; synthetic "
+        "training design without seal, number, signature, or barcode"
+    ),
 }
 
 
@@ -325,6 +329,7 @@ def _weekly_pay_stub() -> tuple[dict[str, Any], dict[str, Any], bytes]:
         _field(pdf, field_name="hourly_rate", value=31.75, display="$31.75", label="HOURLY RATE", x=190, label_y=530, value_y=514),
         _field(pdf, field_name="gross_pay", value=1031.88, display="$1,031.88", label="GROSS PAY", x=340, label_y=530, value_y=514),
         _field(pdf, field_name="net_pay", value=811.22, display="$811.22", label="NET PAY", x=460, label_y=530, value_y=514),
+        _field(pdf, field_name="ytd_gross_pay", value=18573.84, display="$18,573.84", label="YTD GROSS PAY", x=340, label_y=260, value_y=244),
     ]
     _draw_pay_statement_detail(
         pdf,
@@ -355,6 +360,7 @@ def _benefit_letter() -> tuple[dict[str, Any], dict[str, Any], bytes]:
         _field(pdf, field_name="document_date", value="2026-07-02", display="2026-07-02", label="LETTER DATE", x=360, label_y=660, value_y=644),
         _field(pdf, field_name="monthly_benefit", value=1240, display="$1,240.00", label="MONTHLY AMOUNT", x=40, label_y=480, value_y=462, value_size=12),
         _field(pdf, field_name="benefit_frequency", value="monthly", display="monthly", label="FREQUENCY", x=280, label_y=480, value_y=464),
+        _field(pdf, field_name="issuing_agency", value="Northstar Benefit Cooperative", display="Northstar Benefit Cooperative", label="ISSUING AGENCY", x=280, label_y=225, value_y=209),
     ]
     pdf.setFillColor(HexColor("#202428"))
     pdf.setFont("Helvetica", 9)
@@ -446,6 +452,7 @@ def _raster_adversarial_pay_stub() -> tuple[dict[str, Any], dict[str, Any], byte
         _field(pdf, field_name="hourly_rate", value=19.25, display="$19.25", label="HOURLY RATE", x=190, label_y=530, value_y=514),
         _field(pdf, field_name="gross_pay", value=1655.5, display="$1,655.50", label="GROSS PAY", x=340, label_y=530, value_y=514),
         _field(pdf, field_name="net_pay", value=1320.05, display="$1,320.05", label="NET PAY", x=460, label_y=530, value_y=514),
+        _field(pdf, field_name="ytd_gross_pay", value=24832.5, display="$24,832.50", label="YTD GROSS PAY", x=340, label_y=260, value_y=244),
     ]
     _draw_pay_statement_detail(
         pdf,
@@ -534,26 +541,27 @@ def _bank_deposit_statement() -> tuple[dict[str, Any], dict[str, Any], bytes]:
         _field(pdf, field_name="person_name", value="Tari Vale", display="Tari Vale", label="ACCOUNT HOLDER", x=40, label_y=660, value_y=644),
         _field(pdf, field_name="statement_period_start", value="2026-06-01", display="2026-06-01", label="STATEMENT PERIOD START", x=250, label_y=660, value_y=644),
         _field(pdf, field_name="statement_period_end", value="2026-06-30", display="2026-06-30", label="STATEMENT PERIOD END", x=420, label_y=660, value_y=644),
-        _field(pdf, field_name="total_deposits", value=4915.75, display="$4,915.75", label="TOTAL DEPOSITS", x=40, label_y=590, value_y=572, value_size=12),
+        _field(pdf, field_name="bank_name", value="North Quay Community Bank", display="North Quay Community Bank", label="BANK NAME", x=40, label_y=620, value_y=604),
+        _field(pdf, field_name="total_deposits", value=4915.75, display="$4,915.75", label="TOTAL DEPOSITS", x=40, label_y=560, value_y=542, value_size=12),
+        _field(pdf, field_name="ending_balance", value=3306.8, display="$3,306.80", label="ENDING BALANCE", x=465, label_y=560, value_y=542, value_size=12),
     ]
     for label, display, x in (
         ("BEGINNING BALANCE", "$1,204.30", 175),
         ("TOTAL WITHDRAWALS", "$2,813.25", 315),
-        ("ENDING BALANCE", "$3,306.80", 465),
     ):
         pdf.setFillColor(HexColor("#4F555A"))
         pdf.setFont("Helvetica-Bold", 7.5)
-        pdf.drawString(x, 590, label)
+        pdf.drawString(x, 560, label)
         pdf.setFillColor(HexColor("#171A1D"))
         pdf.setFont("Helvetica", 12)
-        pdf.drawString(x, 572, display)
+        pdf.drawString(x, 542, display)
     pdf.setFillColor(HexColor("#202428"))
     pdf.setFont("Helvetica-Bold", 10)
-    pdf.drawString(40, 530, "Deposit activity - page 1 of 2")
+    pdf.drawString(40, 500, "Deposit activity - page 1 of 2")
     _draw_table(
         pdf,
         x=40,
-        top=512,
+        top=482,
         widths=[76, 225, 72, 78, 67],
         headers=["DATE", "DESCRIPTION", "DEPOSIT", "WITHDRAWAL", "BALANCE"],
         rows=[
@@ -566,7 +574,7 @@ def _bank_deposit_statement() -> tuple[dict[str, Any], dict[str, Any], bytes]:
     )
     pdf.setFillColor(HexColor("#555B61"))
     pdf.setFont("Helvetica", 8)
-    pdf.drawString(40, 344, "Only the statement period and deposit total are allowlisted for extraction.")
+    pdf.drawString(40, 315, "Only the matrix-approved summary fields are copied into the structured profile.")
     _footer(pdf, document_id)
     pdf.showPage()
 
@@ -664,6 +672,69 @@ def _self_employment_statement() -> tuple[dict[str, Any], dict[str, Any], bytes]
     )
 
 
+def _government_id() -> tuple[dict[str, Any], dict[str, Any], bytes]:
+    document_id = "SAAD-107-D01"
+    pdf, buffer = _new_canvas()
+    _base_page(
+        pdf,
+        "Government-Issued ID",
+        document_id,
+        "Commonwealth Training Registry",
+    )
+
+    pdf.setFillColor(HexColor("#F1F3F5"))
+    pdf.setStrokeColor(HexColor("#5D6368"))
+    pdf.setLineWidth(1.2)
+    pdf.roundRect(70, 250, 472, 370, 10, fill=1, stroke=1)
+    pdf.setFillColor(HexColor("#30353A"))
+    pdf.setFont("Helvetica-Bold", 13)
+    pdf.drawString(88, 590, "TRAINING COMMONWEALTH IDENTIFICATION")
+    pdf.setFont("Helvetica", 8)
+    pdf.drawString(88, 574, "FICTIONAL RESIDENT ID - NOT VALID FOR ANY PURPOSE")
+    pdf.setStrokeColor(HexColor("#B0B5BA"))
+    pdf.line(88, 560, 524, 560)
+
+    pdf.setFillColor(HexColor("#D6DADD"))
+    pdf.rect(90, 350, 120, 175, fill=1, stroke=0)
+    pdf.setFillColor(HexColor("#9AA0A6"))
+    pdf.circle(150, 466, 30, fill=1, stroke=0)
+    pdf.roundRect(112, 375, 76, 68, 20, fill=1, stroke=0)
+    pdf.setFillColor(HexColor("#555B61"))
+    pdf.setFont("Helvetica-Bold", 7)
+    pdf.drawCentredString(150, 362, "FICTIONAL PORTRAIT")
+
+    fields = [
+        _field(pdf, field_name="person_name", value="Elian Frost", display="Elian Frost", label="FULL LEGAL NAME", x=240, label_y=530, value_y=510, value_size=13),
+        _field(pdf, field_name="date_of_birth", value="1992-11-08", display="1992-11-08", label="DATE OF BIRTH", x=240, label_y=470, value_y=452),
+        _field(pdf, field_name="expiration_date", value="2028-11-08", display="2028-11-08", label="EXPIRATION DATE", x=390, label_y=470, value_y=452),
+    ]
+    pdf.setFillColor(HexColor("#4F555A"))
+    pdf.setFont("Helvetica-Bold", 7.5)
+    pdf.drawString(240, 410, "ISSUE DATE")
+    pdf.drawString(390, 410, "DOCUMENT CLASS")
+    pdf.setFillColor(HexColor("#171A1D"))
+    pdf.setFont("Helvetica", 10)
+    pdf.drawString(240, 392, "2026-07-18")
+    pdf.drawString(390, 392, "RESIDENT ID")
+    pdf.setFillColor(HexColor("#8B1E1E"))
+    pdf.setFont("Helvetica-Bold", 13)
+    pdf.drawString(240, 315, "NOT VALID FOR IDENTIFICATION")
+
+    pdf.setFillColor(HexColor("#555B61"))
+    pdf.setFont("Helvetica", 8)
+    pdf.drawString(70, 215, "Data-minimized fixture: no credential number, signature, barcode, or machine-readable zone.")
+    pdf.drawString(70, 198, "Date of birth is marked sensitive in structured output and remains non-reusable.")
+    _footer(pdf, document_id)
+    return _record(
+        document_id=document_id,
+        household_id="SAAD-107",
+        document_type="government_id",
+        file_name="saad-107_d01_government_id.pdf",
+        fields=fields,
+        pdf_bytes=_finish(pdf, buffer),
+    )
+
+
 def main() -> None:
     DOCUMENTS_DIR.mkdir(parents=True, exist_ok=True)
     GOLD_DIR.mkdir(parents=True, exist_ok=True)
@@ -676,6 +747,7 @@ def main() -> None:
         _property_rent_statement(),
         _bank_deposit_statement(),
         _self_employment_statement(),
+        _government_id(),
     ]
     gold_rows: list[dict[str, Any]] = []
     manifest_rows: list[dict[str, Any]] = []

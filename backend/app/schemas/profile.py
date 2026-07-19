@@ -21,6 +21,7 @@ class DocumentType(str, Enum):
     RENT_STATEMENT = "rent_statement"
     BANK_DEPOSIT_STATEMENT = "bank_deposit_statement"
     SELF_EMPLOYMENT_STATEMENT = "self_employment_statement"
+    GOVERNMENT_ID = "government_id"
     UNKNOWN = "unknown"
 
 
@@ -64,6 +65,12 @@ class FieldName(str, Enum):
     BUSINESS_NAME = "business_name"
     BUSINESS_EXPENSES = "business_expenses"
     NET_BUSINESS_INCOME = "net_business_income"
+    YTD_GROSS_PAY = "ytd_gross_pay"
+    ISSUING_AGENCY = "issuing_agency"
+    DATE_OF_BIRTH = "date_of_birth"
+    EXPIRATION_DATE = "expiration_date"
+    BANK_NAME = "bank_name"
+    ENDING_BALANCE = "ending_balance"
 
 
 class ExtractionEngine(str, Enum):
@@ -115,6 +122,7 @@ class ExtractedField(BaseModel):
     evidence: EvidenceRef
     confirmed: Literal[False] = False
     reusable: Literal[False] = False
+    sensitive: bool = False
 
 
 class SecurityFlag(BaseModel):
@@ -161,6 +169,7 @@ class PayStubData(StructuredDocumentBase):
     hourly_rate: ExtractedField | None = None
     gross_pay: ExtractedField | None = None
     net_pay: ExtractedField | None = None
+    ytd_gross_pay: ExtractedField | None = None
 
 
 class EmploymentLetterData(StructuredDocumentBase):
@@ -179,6 +188,7 @@ class BenefitLetterData(StructuredDocumentBase):
     document_date: ExtractedField | None = None
     monthly_benefit: ExtractedField | None = None
     benefit_frequency: ExtractedField | None = None
+    issuing_agency: ExtractedField | None = None
 
 
 class GigStatementData(StructuredDocumentBase):
@@ -210,6 +220,8 @@ class BankDepositStatementData(StructuredDocumentBase):
     statement_period_start: ExtractedField | None = None
     statement_period_end: ExtractedField | None = None
     total_deposits: ExtractedField | None = None
+    bank_name: ExtractedField | None = None
+    ending_balance: ExtractedField | None = None
 
 
 class SelfEmploymentStatementData(StructuredDocumentBase):
@@ -224,6 +236,13 @@ class SelfEmploymentStatementData(StructuredDocumentBase):
     net_business_income: ExtractedField | None = None
 
 
+class GovernmentIdData(StructuredDocumentBase):
+    document_type: Literal[DocumentType.GOVERNMENT_ID] = DocumentType.GOVERNMENT_ID
+    person_name: ExtractedField | None = None
+    date_of_birth: ExtractedField | None = None
+    expiration_date: ExtractedField | None = None
+
+
 StructuredDocumentData = Annotated[
     ApplicationSummaryData
     | PayStubData
@@ -232,7 +251,8 @@ StructuredDocumentData = Annotated[
     | GigStatementData
     | RentStatementData
     | BankDepositStatementData
-    | SelfEmploymentStatementData,
+    | SelfEmploymentStatementData
+    | GovernmentIdData,
     Field(discriminator="document_type"),
 ]
 

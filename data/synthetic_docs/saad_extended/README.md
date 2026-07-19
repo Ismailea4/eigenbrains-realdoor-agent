@@ -1,6 +1,6 @@
 # Saad Extended Synthetic Fixtures
 
-This directory contains eight deterministic, fictional documents created to
+This directory contains nine deterministic, fictional documents created to
 exercise extraction cases beyond the organizer pack:
 
 - household size 7 and a longer apartment address;
@@ -12,6 +12,11 @@ exercise extraction cases beyond the organizer pack:
 - a two-page bank deposit statement for gig-income corroboration;
 - a self-employment profit-and-loss statement with deterministic net-income
   verification.
+- a data-minimized fictional government ID with legal name, DOB, and expiration
+  date, but no credential number, signature, or barcode.
+
+The matrix extension also extracts pay-stub YTD gross pay, benefit issuing
+agency, and bank name/ending balance.
 
 The detailed tables remain visible for human packet review, while extraction
 copies only allowlisted summary fields. This is intentional data minimization.

@@ -168,8 +168,8 @@ class ExtractorTests(unittest.TestCase):
     def test_extended_vector_fixtures_match_gold(self) -> None:
         rows = load_jsonl(EXTENDED_ROOT / "gold" / "document_gold.jsonl")
         vector_rows = [row for row in rows if not row["rasterized"]]
-        self.assertEqual(len(rows), 8)
-        self.assertEqual(len(vector_rows), 7)
+        self.assertEqual(len(rows), 9)
+        self.assertEqual(len(vector_rows), 8)
         for row in vector_rows:
             result = extract_document(
                 EXTENDED_ROOT / "documents" / row["file_name"],
@@ -244,6 +244,42 @@ class ExtractorTests(unittest.TestCase):
             ],
         )
 
+    def test_user_matrix_fields_are_structured_and_grounded(self) -> None:
+        documents = EXTENDED_ROOT / "documents"
+
+        pay_stub = extract_document(
+            documents / "saad-101_d02_pay_stub.pdf",
+            enable_ocr=False,
+        )
+        self.assertEqual(pay_stub.structured_data.ytd_gross_pay.value, 18573.84)
+
+        benefit = extract_document(
+            documents / "saad-102_d01_benefit_letter.pdf",
+            enable_ocr=False,
+        )
+        self.assertEqual(
+            benefit.structured_data.issuing_agency.value,
+            "Northstar Benefit Cooperative",
+        )
+
+        bank = extract_document(
+            documents / "saad-106_d01_bank_deposit_statement.pdf",
+            enable_ocr=False,
+        )
+        self.assertEqual(bank.structured_data.bank_name.value, "North Quay Community Bank")
+        self.assertEqual(bank.structured_data.ending_balance.value, 3306.8)
+
+        identity = extract_document(
+            documents / "saad-107_d01_government_id.pdf",
+            enable_ocr=False,
+        )
+        self.assertEqual(identity.document_type.value, "government_id")
+        self.assertEqual(identity.structured_data.person_name.value, "Elian Frost")
+        self.assertEqual(identity.structured_data.date_of_birth.value, "1992-11-08")
+        self.assertTrue(identity.structured_data.date_of_birth.sensitive)
+        self.assertFalse(identity.structured_data.date_of_birth.reusable)
+        self.assertEqual(identity.structured_data.expiration_date.value, "2028-11-08")
+
     @unittest.skipUnless(TESSERACT_AVAILABLE, "Tesseract runtime is not installed")
     def test_extended_raster_fixture_is_exact_and_flags_injection(self) -> None:
         row = next(
@@ -269,7 +305,7 @@ class ExtractorTests(unittest.TestCase):
 
     def test_extended_fixtures_record_layout_references(self) -> None:
         rows = load_jsonl(EXTENDED_ROOT / "gold" / "document_gold.jsonl")
-        self.assertEqual(len(rows), 8)
+        self.assertEqual(len(rows), 9)
         for row in rows:
             self.assertTrue(row["design_reference"], row["document_id"])
 

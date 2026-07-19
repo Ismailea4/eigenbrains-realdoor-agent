@@ -36,6 +36,7 @@ from app.schemas.profile import (
     ExtractionStatus,
     FieldName,
     GigStatementData,
+    GovernmentIdData,
     PayStubData,
     RentStatementData,
     SecurityFlag,
@@ -172,6 +173,7 @@ COMMON_FIELDS: dict[FieldName, FieldSpec] = {
             "TENANT",
             "ACCOUNT HOLDER",
             "OWNER",
+            "FULL LEGAL NAME",
         ),
         _parse_text,
     )
@@ -192,6 +194,7 @@ TYPE_FIELDS: dict[DocumentType, dict[FieldName, FieldSpec]] = {
         FieldName.HOURLY_RATE: FieldSpec(("HOURLY RATE",), _parse_decimal),
         FieldName.GROSS_PAY: FieldSpec(("GROSS PAY",), _parse_decimal),
         FieldName.NET_PAY: FieldSpec(("NET PAY",), _parse_decimal),
+        FieldName.YTD_GROSS_PAY: FieldSpec(("YTD GROSS PAY",), _parse_decimal),
     },
     DocumentType.EMPLOYMENT_LETTER: {
         FieldName.DOCUMENT_DATE: FieldSpec(("DOCUMENT DATE", "LETTER DATE"), _parse_date),
@@ -204,6 +207,7 @@ TYPE_FIELDS: dict[DocumentType, dict[FieldName, FieldSpec]] = {
         FieldName.DOCUMENT_DATE: FieldSpec(("DOCUMENT DATE", "LETTER DATE"), _parse_date),
         FieldName.MONTHLY_BENEFIT: FieldSpec(("MONTHLY AMOUNT",), _parse_decimal),
         FieldName.BENEFIT_FREQUENCY: FieldSpec(("FREQUENCY",), _parse_frequency),
+        FieldName.ISSUING_AGENCY: FieldSpec(("ISSUING AGENCY",), _parse_text),
     },
     DocumentType.GIG_STATEMENT: {
         FieldName.STATEMENT_MONTH: FieldSpec(("STATEMENT MONTH",), _parse_month),
@@ -228,6 +232,8 @@ TYPE_FIELDS: dict[DocumentType, dict[FieldName, FieldSpec]] = {
             ("STATEMENT PERIOD END",), _parse_date
         ),
         FieldName.TOTAL_DEPOSITS: FieldSpec(("TOTAL DEPOSITS",), _parse_decimal),
+        FieldName.BANK_NAME: FieldSpec(("BANK NAME",), _parse_text),
+        FieldName.ENDING_BALANCE: FieldSpec(("ENDING BALANCE",), _parse_decimal),
     },
     DocumentType.SELF_EMPLOYMENT_STATEMENT: {
         FieldName.BUSINESS_NAME: FieldSpec(("BUSINESS NAME",), _parse_text),
@@ -239,6 +245,10 @@ TYPE_FIELDS: dict[DocumentType, dict[FieldName, FieldSpec]] = {
         FieldName.NET_BUSINESS_INCOME: FieldSpec(
             ("NET BUSINESS INCOME",), _parse_decimal
         ),
+    },
+    DocumentType.GOVERNMENT_ID: {
+        FieldName.DATE_OF_BIRTH: FieldSpec(("DATE OF BIRTH",), _parse_date),
+        FieldName.EXPIRATION_DATE: FieldSpec(("EXPIRATION DATE",), _parse_date),
     },
 }
 
@@ -259,6 +269,7 @@ DOCUMENT_MARKERS: tuple[tuple[DocumentType, tuple[str, ...]], ...] = (
         DocumentType.SELF_EMPLOYMENT_STATEMENT,
         ("SELF-EMPLOYMENT INCOME STATEMENT",),
     ),
+    (DocumentType.GOVERNMENT_ID, ("GOVERNMENT-ISSUED ID",)),
 )
 
 INJECTION_PATTERNS = (
@@ -564,6 +575,7 @@ def _extract_fields(
                 value=value,
                 confidence=round(confidence, 4),
                 evidence=value_line.evidence(),
+                sensitive=field_name is FieldName.DATE_OF_BIRTH,
             )
         )
     return fields, warnings
@@ -585,6 +597,7 @@ def _build_structured_data(
         DocumentType.RENT_STATEMENT: RentStatementData,
         DocumentType.BANK_DEPOSIT_STATEMENT: BankDepositStatementData,
         DocumentType.SELF_EMPLOYMENT_STATEMENT: SelfEmploymentStatementData,
+        DocumentType.GOVERNMENT_ID: GovernmentIdData,
     }
     model = model_by_type.get(document_type)
     if model is None:
