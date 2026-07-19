@@ -11,3 +11,6 @@ Contains the core algorithmic logic. This domain is strictly isolated into disti
   scope enforcement, and explicit abstention (Stage 2). No model or live web
   result can change the frozen rules.
 - `calculator.py`: Pure, deterministic Python math functions. **NO LLM** generation or probabilistic logic is allowed for financial calculations (Stage 2).
+- `financial_readiness.py`: Six deterministic, evidence-linked financial indicators
+  with versioned policy, confidence separation, explicit abstention, and no
+  aggregate applicant score or decision.

@@ -9,6 +9,13 @@
   *Challenge 03 (Powered by RealPage)*
 </div>
 
+**Transparent Financial Readiness:** RealDoor transforms fragmented synthetic
+rental documents into an evidence-linked financial-readiness profile that
+describes affordability, income stability, accessible liquidity, downside
+scenarios, and cross-document consistency. Every metric exposes its formula,
+inputs, source evidence, policy threshold, and uncertainty; the system produces
+no aggregate applicant score or housing decision.
+
 ---
 
 ## 🎯 Mission Overview
