@@ -9,6 +9,12 @@ from .schemas.calculator import (
     RulesEvaluationRequest,
     RulesEvaluationResponse,
 )
+from .schemas.financial_readiness import (
+    FinancialReadinessRequest,
+    FinancialReadinessResponse,
+    RiskPolicySummary,
+)
+from .services.financial_readiness import FinancialReadinessEngine
 from .services.rules_engine import RulesEngine
 
 
@@ -21,6 +27,7 @@ app = FastAPI(
     ),
 )
 rules_engine = RulesEngine()
+financial_readiness_engine = FinancialReadinessEngine()
 
 
 @app.get("/rules/scope", response_model=ProgramScope)
@@ -42,3 +49,19 @@ def answer_rules_question(request: RuleQuestionRequest) -> RuleQuestionResponse:
     """Answer allowlisted rule questions with human-readable source citations."""
 
     return rules_engine.answer_question(request)
+
+
+@app.get("/financial-readiness/policy", response_model=RiskPolicySummary)
+def get_financial_readiness_policy() -> RiskPolicySummary:
+    """Expose every advisory threshold and its version before calculation."""
+
+    return financial_readiness_engine.policy
+
+
+@app.post("/financial-readiness/evaluate", response_model=FinancialReadinessResponse)
+def evaluate_financial_readiness(
+    request: FinancialReadinessRequest,
+) -> FinancialReadinessResponse:
+    """Return six evidence-linked metrics without an aggregate applicant outcome."""
+
+    return financial_readiness_engine.evaluate(request)

@@ -23,3 +23,14 @@ python -m uvicorn backend.app.main:app --reload
   refuses decision requests.
 
 Full contracts and examples are in `docs/rules_and_math.md`.
+
+## Financial-readiness API
+
+- `GET /financial-readiness/policy` publishes every metric threshold and confirms
+  that aggregate scoring is disabled.
+- `POST /financial-readiness/evaluate` calculates six evidence-linked advisory
+  metrics with `PASS`, `REVIEW`, or `ABSTAIN` at the metric level only.
+
+The financial engine has no overall applicant outcome and never makes or predicts
+a housing decision. See `docs/financial_readiness.md` for formulas, evidence
+requirements, sources, and status semantics.

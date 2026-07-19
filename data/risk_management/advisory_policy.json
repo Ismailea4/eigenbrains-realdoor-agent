@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "policy_id": "REALDOOR_FINANCIAL_READINESS_MVP",
+  "policy_version": "2026.07.19-v1",
+  "effective_date": "2026-07-19",
+  "advisory_only": true,
+  "aggregate_score_enabled": false,
+  "program_id": "LIHTC_MTSP_60",
+  "rule_year": 2026,
+  "area": "Boston-Cambridge-Quincy, MA-NH HMFA",
+  "housing_burden": {
+    "lower_burden_max": "0.30",
+    "elevated_burden_max": "0.50",
+    "threshold_source": "official_hud_descriptive_indicator",
+    "citation_id": "HUD-CHAS-COST-BURDEN"
+  },
+  "income_stability": {
+    "minimum_observed_months": 3,
+    "recent_average_months": 3,
+    "cv_review_above": "0.30",
+    "threshold_source": "configurable_internal_policy",
+    "legal_threshold": false
+  },
+  "reserve_coverage": {
+    "minimum_coverage_threshold": null,
+    "threshold_source": "calculation_only_no_acceptance_threshold",
+    "legal_threshold": false
+  },
+  "stress_test": {
+    "default_income_shock_rate": "0.15",
+    "coverage_review_below": "1.00",
+    "threshold_source": "configurable_internal_scenario",
+    "legal_threshold": false
+  },
+  "reconciliation": {
+    "relative_difference_review_above": "0.05",
+    "threshold_source": "configurable_internal_policy",
+    "legal_threshold": false
+  },
+  "citations": [
+    {
+      "citation_id": "HUD-CHAS-COST-BURDEN",
+      "authority": "official_hud",
+      "title": "CHAS: Background",
+      "url": "https://www.huduser.gov/portal/datasets/cp/CHAS/bg_chas.html",
+      "note": "HUD describes cost burden as housing costs including utilities exceeding 30% of monthly income and severe cost burden as exceeding 50%."
+    },
+    {
+      "citation_id": "HUD-AI-TENANT-SCREENING",
+      "authority": "official_hud",
+      "title": "FHEO Guidance on Screening of Applicants for Rental Housing",
+      "url": "https://archives.hud.gov/news/2024/FHEO_Guidance_on_Screening_of_Applicants_for_Rental_Housing.pdf",
+      "note": "Tenant-screening automation must remain transparent, accurate, fair, and compliant with the Fair Housing Act."
+    },
+    {
+      "citation_id": "CFPB-TENANT-SCREENING-RIGHTS",
+      "authority": "official_cfpb",
+      "title": "Review your rental background check",
+      "url": "https://www.consumerfinance.gov/rules-policy/tenant-background-checks/review-your-rental-background-check/",
+      "note": "Rental applicants should be able to identify and dispute inaccurate or outdated screening information."
+    }
+  ],
+  "decision_boundary": "Metric statuses describe evidence and configured scenarios only. They do not approve, deny, score, rank, predict acceptance, or determine eligibility."
+}

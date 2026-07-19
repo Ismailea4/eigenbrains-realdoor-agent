@@ -9,6 +9,13 @@ Navigating affordable housing applications is complex, and a single paperwork er
 
 **Core Constraint Met:** This system is strictly assistive. It does **not** make eligibility decisions, approve, deny, or rank applicants. Final decisions remain securely in the hands of qualified human reviewers.
 
+**Transparent Financial Readiness:** RealDoor transforms fragmented synthetic
+rental documents into an evidence-linked financial-readiness profile that
+describes affordability, income stability, accessible liquidity, downside
+scenarios, and cross-document consistency. Every metric exposes its formula,
+inputs, source evidence, policy threshold, and uncertainty; the system produces
+no aggregate applicant score or housing decision.
+
 ---
 
 ## ⚙️ Core Architecture & Pipeline
