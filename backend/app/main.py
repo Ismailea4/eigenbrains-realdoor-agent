@@ -1,7 +1,6 @@
 """FastAPI entry point for the RealDoor rules-and-math stage."""
 
-from fastapi import FastAPI
-
+from fastapi import FastAPI, UploadFile, File, HTTPException
 from .schemas.calculator import (
     ProgramScope,
     RuleQuestionRequest,
@@ -16,6 +15,8 @@ from .schemas.financial_readiness import (
 )
 from .services.financial_readiness import FinancialReadinessEngine
 from .services.rules_engine import RulesEngine
+from .services.extractor import extract_document, DocumentExtractionError
+from .schemas.profile import DocumentExtraction
 
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -74,3 +75,13 @@ def evaluate_financial_readiness(
     """Return six evidence-linked metrics without an aggregate applicant outcome."""
 
     return financial_readiness_engine.evaluate(request)
+
+
+@app.post("/upload/extract", response_model=DocumentExtraction)
+async def upload_extract(file: UploadFile = File(...)) -> DocumentExtraction:
+    """Extract structured data and evidence from a synthetic PDF."""
+    try:
+        content = await file.read()
+        return extract_document(content)
+    except DocumentExtractionError as e:
+        raise HTTPException(status_code=400, detail=str(e))
