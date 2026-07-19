@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RealDoor renter-budget toggle</title>
+    <link rel="stylesheet" href="./renter_budget_toggle.css" />
+    <style>
+      body { margin: 0; padding: 32px; }
+      main { margin: 0 auto; max-width: 760px; }
+      pre { background: #101827; color: #f8fafc; overflow: auto; padding: 16px; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Application-readiness preferences</h1>
+      <div id="renter-budget-control"></div>
+      <h2>Evaluation payload</h2>
+      <pre id="evaluation-payload"></pre>
+      <h2>Export payload</h2>
+      <pre id="export-payload"></pre>
+    </main>
+    <script type="module">
+      import { mountRenterBudgetToggle } from "./renter_budget_toggle.js";
+
+      const evaluation = document.querySelector("#evaluation-payload");
+      const exportPacket = document.querySelector("#export-payload");
+      let control;
+
+      function renderPayloads() {
+        evaluation.textContent = JSON.stringify(
+          control.applyToPayload({ as_of_date: "2026-07-19" }),
+          null,
+          2,
+        );
+        exportPacket.textContent = JSON.stringify(
+          control.applyToPayload({
+            renter_requested_export: true,
+            as_of_date: "2026-07-19",
+          }),
+          null,
+          2,
+        );
+      }
+
+      control = mountRenterBudgetToggle(
+        document.querySelector("#renter-budget-control"),
+        { onChange: renderPayloads },
+      );
+      renderPayloads();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,85 @@
+:root {
+  color-scheme: light;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+.renter-budget-control {
+  align-items: center;
+  background: #f7faff;
+  border: 1px solid #9db4d0;
+  border-radius: 12px;
+  color: #13233d;
+  display: flex;
+  gap: 24px;
+  justify-content: space-between;
+  max-width: 720px;
+  padding: 18px;
+}
+
+.renter-budget-control__copy {
+  min-width: 0;
+}
+
+.renter-budget-control__label {
+  font-size: 1rem;
+  margin: 0 0 6px;
+}
+
+.renter-budget-control__description,
+.renter-budget-control__status {
+  line-height: 1.45;
+  margin: 0;
+}
+
+.renter-budget-control__status {
+  color: #40516c;
+  font-size: 0.875rem;
+  margin-top: 6px;
+}
+
+.renter-budget-toggle {
+  align-items: center;
+  background: #ffffff;
+  border: 2px solid #526782;
+  border-radius: 999px;
+  color: #13233d;
+  cursor: pointer;
+  display: inline-flex;
+  flex: 0 0 auto;
+  font: inherit;
+  font-weight: 700;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 76px;
+  padding: 8px 16px;
+}
+
+.renter-budget-toggle.is-enabled {
+  background: #0b5f4b;
+  border-color: #0b5f4b;
+  color: #ffffff;
+}
+
+.renter-budget-toggle:focus-visible {
+  outline: 3px solid #ffbf47;
+  outline-offset: 3px;
+}
+
+.renter-budget-toggle:disabled {
+  background: #e5e7eb;
+  border-color: #8a94a3;
+  color: #4b5563;
+  cursor: not-allowed;
+}
+
+@media (max-width: 560px) {
+  .renter-budget-control {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .renter-budget-toggle {
+    width: 100%;
+  }
+}
+

@@ -6,12 +6,14 @@ import unittest
 from decimal import Decimal
 from pathlib import Path
 
+from fastapi import HTTPException
 from pydantic import ValidationError
 
 from backend.app.main import (
     app,
-    evaluate_financial_readiness,
-    get_financial_readiness_policy,
+    evaluate_renter_budget,
+    get_renter_budget_policy,
+    journey_service,
 )
 from backend.app.schemas.calculator import EvidenceReference
 from backend.app.schemas.financial_readiness import (
@@ -179,28 +181,28 @@ class FinancialReadinessTests(unittest.TestCase):
         self.assertTrue(response.scope_valid)
 
         income = metrics[MetricId.VERIFIED_MONTHLY_INCOME]
-        self.assertEqual(income.status, MetricStatus.PASS)
+        self.assertEqual(income.status, MetricStatus.CALCULATED)
         self.assertEqual(income.value, Decimal("4100.00"))
 
         burden = metrics[MetricId.HOUSING_COST_BURDEN]
-        self.assertEqual(burden.status, MetricStatus.REVIEW)
+        self.assertEqual(burden.status, MetricStatus.NEEDS_REVIEW)
         self.assertEqual(burden.value, Decimal("0.3293"))
         self.assertEqual(burden.citations[0].citation_id, "HUD-CHAS-COST-BURDEN")
 
         stability = metrics[MetricId.INCOME_STABILITY]
-        self.assertEqual(stability.status, MetricStatus.PASS)
+        self.assertEqual(stability.status, MetricStatus.CALCULATED)
         self.assertEqual(stability.value, Decimal("0.0597"))
 
         reserves = metrics[MetricId.LIQUID_RESERVE_COVERAGE]
-        self.assertEqual(reserves.status, MetricStatus.PASS)
+        self.assertEqual(reserves.status, MetricStatus.CALCULATED)
         self.assertEqual(reserves.value, Decimal("4.2000"))
 
         stress = metrics[MetricId.DOWNSIDE_AFFORDABILITY]
-        self.assertEqual(stress.status, MetricStatus.PASS)
+        self.assertEqual(stress.status, MetricStatus.CALCULATED)
         self.assertEqual(stress.value, Decimal("2.5815"))
 
         reconciliation = metrics[MetricId.CROSS_DOCUMENT_RECONCILIATION]
-        self.assertEqual(reconciliation.status, MetricStatus.PASS)
+        self.assertEqual(reconciliation.status, MetricStatus.CALCULATED)
         self.assertEqual(reconciliation.value, Decimal("0.0083"))
         self.assertTrue(all(metric.evidence for metric in metrics.values()))
 
@@ -219,7 +221,7 @@ class FinancialReadinessTests(unittest.TestCase):
             response.income_scenarios.potential_verified_monthly_income,
             Decimal("4500.00"),
         )
-        self.assertEqual(income_metric.status, MetricStatus.REVIEW)
+        self.assertEqual(income_metric.status, MetricStatus.NEEDS_REVIEW)
         self.assertNotEqual(response.income_scenarios.confirmed_monthly_income, Decimal("3200"))
 
     def test_missing_or_non_synthetic_income_evidence_causes_abstention(self) -> None:
@@ -230,15 +232,15 @@ class FinancialReadinessTests(unittest.TestCase):
                 metrics = self.metrics_by_id(response)
                 self.assertEqual(
                     metrics[MetricId.VERIFIED_MONTHLY_INCOME].status,
-                    MetricStatus.ABSTAIN,
+                    MetricStatus.INSUFFICIENT_EVIDENCE,
                 )
                 self.assertEqual(
                     metrics[MetricId.HOUSING_COST_BURDEN].status,
-                    MetricStatus.ABSTAIN,
+                    MetricStatus.INSUFFICIENT_EVIDENCE,
                 )
                 self.assertEqual(
                     metrics[MetricId.DOWNSIDE_AFFORDABILITY].status,
-                    MetricStatus.ABSTAIN,
+                    MetricStatus.INSUFFICIENT_EVIDENCE,
                 )
 
     def test_income_stability_abstains_on_short_history_and_reviews_volatility(self) -> None:
@@ -252,7 +254,7 @@ class FinancialReadinessTests(unittest.TestCase):
         )
         self.assertEqual(
             self.metrics_by_id(short)[MetricId.INCOME_STABILITY].status,
-            MetricStatus.ABSTAIN,
+            MetricStatus.INSUFFICIENT_EVIDENCE,
         )
 
         volatile = self.engine.evaluate(
@@ -265,7 +267,7 @@ class FinancialReadinessTests(unittest.TestCase):
             )
         )
         metric = self.metrics_by_id(volatile)[MetricId.INCOME_STABILITY]
-        self.assertEqual(metric.status, MetricStatus.REVIEW)
+        self.assertEqual(metric.status, MetricStatus.NEEDS_REVIEW)
         self.assertGreater(metric.value, Decimal("0.30"))
         self.assertIn("not law", metric.interpretation)
 
@@ -290,7 +292,10 @@ class FinancialReadinessTests(unittest.TestCase):
         no_accessible_metric = self.metrics_by_id(no_accessible)[
             MetricId.LIQUID_RESERVE_COVERAGE
         ]
-        self.assertEqual(no_accessible_metric.status, MetricStatus.ABSTAIN)
+        self.assertEqual(
+            no_accessible_metric.status,
+            MetricStatus.INSUFFICIENT_EVIDENCE,
+        )
 
     def test_custom_stress_scenario_is_visible_and_can_trigger_review(self) -> None:
         scenario = StressScenario(
@@ -300,7 +305,7 @@ class FinancialReadinessTests(unittest.TestCase):
         )
         response = self.engine.evaluate(self.request(stress_scenario=scenario))
         metric = self.metrics_by_id(response)[MetricId.DOWNSIDE_AFFORDABILITY]
-        self.assertEqual(metric.status, MetricStatus.REVIEW)
+        self.assertEqual(metric.status, MetricStatus.NEEDS_REVIEW)
         self.assertEqual(metric.value, Decimal("0.6074"))
         self.assertIn("renter_selected_scenario", metric.threshold_source)
         self.assertIn("0.80", metric.formula)
@@ -324,7 +329,7 @@ class FinancialReadinessTests(unittest.TestCase):
             self.request(reconciliation_facts=[conflicting_fact])
         )
         metric = self.metrics_by_id(conflicting)[MetricId.CROSS_DOCUMENT_RECONCILIATION]
-        self.assertEqual(metric.status, MetricStatus.REVIEW)
+        self.assertEqual(metric.status, MetricStatus.NEEDS_REVIEW)
         self.assertEqual(metric.value, Decimal("0.2857"))
 
         single_fact = conflicting_fact.model_copy(
@@ -336,12 +341,20 @@ class FinancialReadinessTests(unittest.TestCase):
         insufficient_metric = self.metrics_by_id(insufficient)[
             MetricId.CROSS_DOCUMENT_RECONCILIATION
         ]
-        self.assertEqual(insufficient_metric.status, MetricStatus.ABSTAIN)
+        self.assertEqual(
+            insufficient_metric.status,
+            MetricStatus.INSUFFICIENT_EVIDENCE,
+        )
 
     def test_wrong_scope_abstains_all_metrics_without_calculating(self) -> None:
         response = self.engine.evaluate(self.request(rule_year=2025))
         self.assertFalse(response.scope_valid)
-        self.assertTrue(all(metric.status == MetricStatus.ABSTAIN for metric in response.metrics))
+        self.assertTrue(
+            all(
+                metric.status == MetricStatus.INSUFFICIENT_EVIDENCE
+                for metric in response.metrics
+            )
+        )
         self.assertTrue(all(metric.value is None for metric in response.metrics))
         self.assertIn(
             RiskReasonCode.SCOPE_NOT_SUPPORTED,
@@ -400,7 +413,10 @@ class FinancialReadinessTests(unittest.TestCase):
     def test_policy_checksum_is_pinned_and_tampering_fails_closed(self) -> None:
         import hashlib
 
-        self.assertEqual(hashlib.sha256(POLICY_PATH.read_bytes()).hexdigest(), EXPECTED_POLICY_SHA256)
+        self.assertEqual(
+            hashlib.sha256(POLICY_PATH.read_bytes()).hexdigest(),
+            EXPECTED_POLICY_SHA256,
+        )
         with tempfile.TemporaryDirectory(dir=ROOT) as temporary_directory:
             tampered = Path(temporary_directory) / "advisory_policy.json"
             raw = json.loads(POLICY_PATH.read_text(encoding="utf-8"))
@@ -412,12 +428,22 @@ class FinancialReadinessTests(unittest.TestCase):
     def test_api_routes_expose_typed_policy_and_evaluation(self) -> None:
         route_paths = {route.path for route in app.routes}
         self.assertTrue(
-            {"/financial-readiness/policy", "/financial-readiness/evaluate"}
+            {"/renter-budget/policy", "/renter-budget/evaluate"}
             <= route_paths
         )
-        self.assertFalse(get_financial_readiness_policy().aggregate_score_enabled)
-        response = evaluate_financial_readiness(self.request())
-        self.assertEqual(len(response.metrics), 6)
+        original = journey_service.renter_budget_enabled
+        try:
+            journey_service.renter_budget_enabled = False
+            with self.assertRaises(HTTPException) as disabled:
+                get_renter_budget_policy()
+            self.assertEqual(disabled.exception.status_code, 404)
+
+            journey_service.renter_budget_enabled = True
+            self.assertFalse(get_renter_budget_policy().aggregate_score_enabled)
+            response = evaluate_renter_budget(self.request())
+            self.assertEqual(len(response.metrics), 6)
+        finally:
+            journey_service.renter_budget_enabled = original
 
     def test_duplicate_months_fail_schema_validation(self) -> None:
         duplicate = self.history("2026-01", "4000")

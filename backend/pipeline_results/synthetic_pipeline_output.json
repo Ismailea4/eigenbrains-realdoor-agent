@@ -3042,7 +3042,9 @@
         "SAAD-101-D01",
         "SAAD-101-D02"
       ],
-      "financial_readiness": {
+      "household_id": "SAAD-101",
+      "renter_budget": {
+        "reason": null,
         "request": {
           "area": "Boston-Cambridge-Quincy, MA-NH HMFA",
           "household_id": "SAAD-101",
@@ -3177,11 +3179,11 @@
                 }
               ],
               "formula": "sum(confirmed recurring monthly income sources)",
-              "interpretation": "Recurring monthly income is confirmed and traceable. PASS describes this metric's evidence state only.",
+              "interpretation": "Recurring monthly income is confirmed, traceable, and calculated. This describes the metric only, not an applicant outcome.",
               "requires_human_confirmation": false,
               "review_reasons": [],
               "rule_id": "RULE_VERIFIED_MONTHLY_INCOME",
-              "status": "PASS",
+              "status": "CALCULATED",
               "threshold": null,
               "threshold_source": "evidence_status_only_no_acceptance_threshold",
               "unit": "USD/month",
@@ -3234,7 +3236,7 @@
                 }
               ],
               "rule_id": "RULE_HOUSING_COST_BURDEN",
-              "status": "ABSTAIN",
+              "status": "INSUFFICIENT_EVIDENCE",
               "threshold": null,
               "threshold_source": "official_hud_descriptive_indicator",
               "unit": null,
@@ -3274,7 +3276,7 @@
                 }
               ],
               "rule_id": "RULE_INCOME_STABILITY",
-              "status": "ABSTAIN",
+              "status": "INSUFFICIENT_EVIDENCE",
               "threshold": null,
               "threshold_source": "configurable_internal_policy",
               "unit": null,
@@ -3305,7 +3307,7 @@
                 }
               ],
               "rule_id": "RULE_LIQUID_RESERVE_COVERAGE",
-              "status": "ABSTAIN",
+              "status": "INSUFFICIENT_EVIDENCE",
               "threshold": null,
               "threshold_source": "calculation_only_no_acceptance_threshold",
               "unit": null,
@@ -3350,7 +3352,7 @@
                 }
               ],
               "rule_id": "RULE_DOWNSIDE_AFFORDABILITY",
-              "status": "ABSTAIN",
+              "status": "INSUFFICIENT_EVIDENCE",
               "threshold": null,
               "threshold_source": "configurable_internal_scenario",
               "unit": null,
@@ -3371,7 +3373,7 @@
                 }
               ],
               "rule_id": "RULE_CROSS_DOCUMENT_RECONCILIATION",
-              "status": "ABSTAIN",
+              "status": "INSUFFICIENT_EVIDENCE",
               "threshold": null,
               "threshold_source": "configurable_internal_policy",
               "unit": null,
@@ -3401,8 +3403,9 @@
         },
         "status": "EVALUATED"
       },
-      "household_id": "SAAD-101",
       "rules_and_math": {
+        "missing": [],
+        "reason": null,
         "request": {
           "ami_percentage": 60,
           "area": "Boston-Cambridge-Quincy, MA-NH HMFA",
@@ -3572,7 +3575,9 @@
       "document_ids": [
         "SAAD-102-D01"
       ],
-      "financial_readiness": {
+      "household_id": "SAAD-102",
+      "renter_budget": {
+        "reason": null,
         "request": {
           "area": "Boston-Cambridge-Quincy, MA-NH HMFA",
           "household_id": "SAAD-102",
@@ -3707,11 +3712,11 @@
                 }
               ],
               "formula": "sum(confirmed recurring monthly income sources)",
-              "interpretation": "Recurring monthly income is confirmed and traceable. PASS describes this metric's evidence state only.",
+              "interpretation": "Recurring monthly income is confirmed, traceable, and calculated. This describes the metric only, not an applicant outcome.",
               "requires_human_confirmation": false,
               "review_reasons": [],
               "rule_id": "RULE_VERIFIED_MONTHLY_INCOME",
-              "status": "PASS",
+              "status": "CALCULATED",
               "threshold": null,
               "threshold_source": "evidence_status_only_no_acceptance_threshold",
               "unit": "USD/month",
@@ -3764,7 +3769,7 @@
                 }
               ],
               "rule_id": "RULE_HOUSING_COST_BURDEN",
-              "status": "ABSTAIN",
+              "status": "INSUFFICIENT_EVIDENCE",
               "threshold": null,
               "threshold_source": "official_hud_descriptive_indicator",
               "unit": null,
@@ -3804,7 +3809,7 @@
                 }
               ],
               "rule_id": "RULE_INCOME_STABILITY",
-              "status": "ABSTAIN",
+              "status": "INSUFFICIENT_EVIDENCE",
               "threshold": null,
               "threshold_source": "configurable_internal_policy",
               "unit": null,
@@ -3835,7 +3840,7 @@
                 }
               ],
               "rule_id": "RULE_LIQUID_RESERVE_COVERAGE",
-              "status": "ABSTAIN",
+              "status": "INSUFFICIENT_EVIDENCE",
               "threshold": null,
               "threshold_source": "calculation_only_no_acceptance_threshold",
               "unit": null,
@@ -3880,7 +3885,7 @@
                 }
               ],
               "rule_id": "RULE_DOWNSIDE_AFFORDABILITY",
-              "status": "ABSTAIN",
+              "status": "INSUFFICIENT_EVIDENCE",
               "threshold": null,
               "threshold_source": "configurable_internal_scenario",
               "unit": null,
@@ -3901,7 +3906,7 @@
                 }
               ],
               "rule_id": "RULE_CROSS_DOCUMENT_RECONCILIATION",
-              "status": "ABSTAIN",
+              "status": "INSUFFICIENT_EVIDENCE",
               "threshold": null,
               "threshold_source": "configurable_internal_policy",
               "unit": null,
@@ -3931,12 +3936,13 @@
         },
         "status": "EVALUATED"
       },
-      "household_id": "SAAD-102",
       "rules_and_math": {
         "missing": [
           "confirmed_household_size"
         ],
         "reason": "Required confirmed evidence is unavailable in this synthetic packet.",
+        "request": null,
+        "response": null,
         "status": "ABSTAIN"
       }
     },
@@ -3944,7 +3950,9 @@
       "document_ids": [
         "SAAD-103-D01"
       ],
-      "financial_readiness": {
+      "household_id": "SAAD-103",
+      "renter_budget": {
+        "reason": null,
         "request": {
           "area": "Boston-Cambridge-Quincy, MA-NH HMFA",
           "household_id": "SAAD-103",
@@ -4079,11 +4087,11 @@
                 }
               ],
               "formula": "sum(confirmed recurring monthly income sources)",
-              "interpretation": "Recurring monthly income is confirmed and traceable. PASS describes this metric's evidence state only.",
+              "interpretation": "Recurring monthly income is confirmed, traceable, and calculated. This describes the metric only, not an applicant outcome.",
               "requires_human_confirmation": false,
               "review_reasons": [],
               "rule_id": "RULE_VERIFIED_MONTHLY_INCOME",
-              "status": "PASS",
+              "status": "CALCULATED",
               "threshold": null,
               "threshold_source": "evidence_status_only_no_acceptance_threshold",
               "unit": "USD/month",
@@ -4136,7 +4144,7 @@
                 }
               ],
               "rule_id": "RULE_HOUSING_COST_BURDEN",
-              "status": "ABSTAIN",
+              "status": "INSUFFICIENT_EVIDENCE",
               "threshold": null,
               "threshold_source": "official_hud_descriptive_indicator",
               "unit": null,
@@ -4176,7 +4184,7 @@
                 }
               ],
               "rule_id": "RULE_INCOME_STABILITY",
-              "status": "ABSTAIN",
+              "status": "INSUFFICIENT_EVIDENCE",
               "threshold": null,
               "threshold_source": "configurable_internal_policy",
               "unit": null,
@@ -4207,7 +4215,7 @@
                 }
               ],
               "rule_id": "RULE_LIQUID_RESERVE_COVERAGE",
-              "status": "ABSTAIN",
+              "status": "INSUFFICIENT_EVIDENCE",
               "threshold": null,
               "threshold_source": "calculation_only_no_acceptance_threshold",
               "unit": null,
@@ -4252,7 +4260,7 @@
                 }
               ],
               "rule_id": "RULE_DOWNSIDE_AFFORDABILITY",
-              "status": "ABSTAIN",
+              "status": "INSUFFICIENT_EVIDENCE",
               "threshold": null,
               "threshold_source": "configurable_internal_scenario",
               "unit": null,
@@ -4273,7 +4281,7 @@
                 }
               ],
               "rule_id": "RULE_CROSS_DOCUMENT_RECONCILIATION",
-              "status": "ABSTAIN",
+              "status": "INSUFFICIENT_EVIDENCE",
               "threshold": null,
               "threshold_source": "configurable_internal_policy",
               "unit": null,
@@ -4303,12 +4311,13 @@
         },
         "status": "EVALUATED"
       },
-      "household_id": "SAAD-103",
       "rules_and_math": {
         "missing": [
           "confirmed_household_size"
         ],
         "reason": "Required confirmed evidence is unavailable in this synthetic packet.",
+        "request": null,
+        "response": null,
         "status": "ABSTAIN"
       }
     },
@@ -4316,7 +4325,9 @@
       "document_ids": [
         "SAAD-104-D01"
       ],
-      "financial_readiness": {
+      "household_id": "SAAD-104",
+      "renter_budget": {
+        "reason": null,
         "request": {
           "area": "Boston-Cambridge-Quincy, MA-NH HMFA",
           "household_id": "SAAD-104",
@@ -4451,11 +4462,11 @@
                 }
               ],
               "formula": "sum(confirmed recurring monthly income sources)",
-              "interpretation": "Recurring monthly income is confirmed and traceable. PASS describes this metric's evidence state only.",
+              "interpretation": "Recurring monthly income is confirmed, traceable, and calculated. This describes the metric only, not an applicant outcome.",
               "requires_human_confirmation": false,
               "review_reasons": [],
               "rule_id": "RULE_VERIFIED_MONTHLY_INCOME",
-              "status": "PASS",
+              "status": "CALCULATED",
               "threshold": null,
               "threshold_source": "evidence_status_only_no_acceptance_threshold",
               "unit": "USD/month",
@@ -4508,7 +4519,7 @@
                 }
               ],
               "rule_id": "RULE_HOUSING_COST_BURDEN",
-              "status": "ABSTAIN",
+              "status": "INSUFFICIENT_EVIDENCE",
               "threshold": null,
               "threshold_source": "official_hud_descriptive_indicator",
               "unit": null,
@@ -4548,7 +4559,7 @@
                 }
               ],
               "rule_id": "RULE_INCOME_STABILITY",
-              "status": "ABSTAIN",
+              "status": "INSUFFICIENT_EVIDENCE",
               "threshold": null,
               "threshold_source": "configurable_internal_policy",
               "unit": null,
@@ -4579,7 +4590,7 @@
                 }
               ],
               "rule_id": "RULE_LIQUID_RESERVE_COVERAGE",
-              "status": "ABSTAIN",
+              "status": "INSUFFICIENT_EVIDENCE",
               "threshold": null,
               "threshold_source": "calculation_only_no_acceptance_threshold",
               "unit": null,
@@ -4624,7 +4635,7 @@
                 }
               ],
               "rule_id": "RULE_DOWNSIDE_AFFORDABILITY",
-              "status": "ABSTAIN",
+              "status": "INSUFFICIENT_EVIDENCE",
               "threshold": null,
               "threshold_source": "configurable_internal_scenario",
               "unit": null,
@@ -4645,7 +4656,7 @@
                 }
               ],
               "rule_id": "RULE_CROSS_DOCUMENT_RECONCILIATION",
-              "status": "ABSTAIN",
+              "status": "INSUFFICIENT_EVIDENCE",
               "threshold": null,
               "threshold_source": "configurable_internal_policy",
               "unit": null,
@@ -4675,12 +4686,13 @@
         },
         "status": "EVALUATED"
       },
-      "household_id": "SAAD-104",
       "rules_and_math": {
         "missing": [
           "confirmed_household_size"
         ],
         "reason": "Required confirmed evidence is unavailable in this synthetic packet.",
+        "request": null,
+        "response": null,
         "status": "ABSTAIN"
       }
     },
@@ -4688,7 +4700,9 @@
       "document_ids": [
         "SAAD-105-D01"
       ],
-      "financial_readiness": {
+      "household_id": "SAAD-105",
+      "renter_budget": {
+        "reason": null,
         "request": {
           "area": "Boston-Cambridge-Quincy, MA-NH HMFA",
           "household_id": "SAAD-105",
@@ -4789,7 +4803,7 @@
                 }
               ],
               "rule_id": "RULE_VERIFIED_MONTHLY_INCOME",
-              "status": "ABSTAIN",
+              "status": "INSUFFICIENT_EVIDENCE",
               "threshold": null,
               "threshold_source": "evidence_status_only_no_acceptance_threshold",
               "unit": "USD/month",
@@ -4842,7 +4856,7 @@
                 }
               ],
               "rule_id": "RULE_HOUSING_COST_BURDEN",
-              "status": "ABSTAIN",
+              "status": "INSUFFICIENT_EVIDENCE",
               "threshold": null,
               "threshold_source": "official_hud_descriptive_indicator",
               "unit": null,
@@ -4863,7 +4877,7 @@
                 }
               ],
               "rule_id": "RULE_INCOME_STABILITY",
-              "status": "ABSTAIN",
+              "status": "INSUFFICIENT_EVIDENCE",
               "threshold": null,
               "threshold_source": "configurable_internal_policy",
               "unit": null,
@@ -4908,7 +4922,7 @@
                 }
               ],
               "rule_id": "RULE_LIQUID_RESERVE_COVERAGE",
-              "status": "ABSTAIN",
+              "status": "INSUFFICIENT_EVIDENCE",
               "threshold": null,
               "threshold_source": "calculation_only_no_acceptance_threshold",
               "unit": null,
@@ -4953,7 +4967,7 @@
                 }
               ],
               "rule_id": "RULE_DOWNSIDE_AFFORDABILITY",
-              "status": "ABSTAIN",
+              "status": "INSUFFICIENT_EVIDENCE",
               "threshold": null,
               "threshold_source": "configurable_internal_scenario",
               "unit": null,
@@ -4974,7 +4988,7 @@
                 }
               ],
               "rule_id": "RULE_CROSS_DOCUMENT_RECONCILIATION",
-              "status": "ABSTAIN",
+              "status": "INSUFFICIENT_EVIDENCE",
               "threshold": null,
               "threshold_source": "configurable_internal_policy",
               "unit": null,
@@ -5004,13 +5018,14 @@
         },
         "status": "EVALUATED"
       },
-      "household_id": "SAAD-105",
       "rules_and_math": {
         "missing": [
           "confirmed_household_size",
           "confirmed_recurring_income"
         ],
         "reason": "Required confirmed evidence is unavailable in this synthetic packet.",
+        "request": null,
+        "response": null,
         "status": "ABSTAIN"
       }
     },
@@ -5019,7 +5034,9 @@
         "SAAD-106-D01",
         "SAAD-106-D02"
       ],
-      "financial_readiness": {
+      "household_id": "SAAD-106",
+      "renter_budget": {
+        "reason": null,
         "request": {
           "area": "Boston-Cambridge-Quincy, MA-NH HMFA",
           "household_id": "SAAD-106",
@@ -5178,11 +5195,11 @@
                 }
               ],
               "formula": "sum(confirmed recurring monthly income sources)",
-              "interpretation": "Recurring monthly income is confirmed and traceable. PASS describes this metric's evidence state only.",
+              "interpretation": "Recurring monthly income is confirmed, traceable, and calculated. This describes the metric only, not an applicant outcome.",
               "requires_human_confirmation": false,
               "review_reasons": [],
               "rule_id": "RULE_VERIFIED_MONTHLY_INCOME",
-              "status": "PASS",
+              "status": "CALCULATED",
               "threshold": null,
               "threshold_source": "evidence_status_only_no_acceptance_threshold",
               "unit": "USD/month",
@@ -5235,7 +5252,7 @@
                 }
               ],
               "rule_id": "RULE_HOUSING_COST_BURDEN",
-              "status": "ABSTAIN",
+              "status": "INSUFFICIENT_EVIDENCE",
               "threshold": null,
               "threshold_source": "official_hud_descriptive_indicator",
               "unit": null,
@@ -5275,7 +5292,7 @@
                 }
               ],
               "rule_id": "RULE_INCOME_STABILITY",
-              "status": "ABSTAIN",
+              "status": "INSUFFICIENT_EVIDENCE",
               "threshold": null,
               "threshold_source": "configurable_internal_policy",
               "unit": null,
@@ -5320,7 +5337,7 @@
                 }
               ],
               "rule_id": "RULE_LIQUID_RESERVE_COVERAGE",
-              "status": "ABSTAIN",
+              "status": "INSUFFICIENT_EVIDENCE",
               "threshold": null,
               "threshold_source": "calculation_only_no_acceptance_threshold",
               "unit": null,
@@ -5365,7 +5382,7 @@
                 }
               ],
               "rule_id": "RULE_DOWNSIDE_AFFORDABILITY",
-              "status": "ABSTAIN",
+              "status": "INSUFFICIENT_EVIDENCE",
               "threshold": null,
               "threshold_source": "configurable_internal_scenario",
               "unit": null,
@@ -5386,7 +5403,7 @@
                 }
               ],
               "rule_id": "RULE_CROSS_DOCUMENT_RECONCILIATION",
-              "status": "ABSTAIN",
+              "status": "INSUFFICIENT_EVIDENCE",
               "threshold": null,
               "threshold_source": "configurable_internal_policy",
               "unit": null,
@@ -5416,12 +5433,13 @@
         },
         "status": "EVALUATED"
       },
-      "household_id": "SAAD-106",
       "rules_and_math": {
         "missing": [
           "confirmed_household_size"
         ],
         "reason": "Required confirmed evidence is unavailable in this synthetic packet.",
+        "request": null,
+        "response": null,
         "status": "ABSTAIN"
       }
     },
@@ -5429,7 +5447,9 @@
       "document_ids": [
         "SAAD-107-D01"
       ],
-      "financial_readiness": {
+      "household_id": "SAAD-107",
+      "renter_budget": {
+        "reason": null,
         "request": {
           "area": "Boston-Cambridge-Quincy, MA-NH HMFA",
           "household_id": "SAAD-107",
@@ -5510,7 +5530,7 @@
                 }
               ],
               "rule_id": "RULE_VERIFIED_MONTHLY_INCOME",
-              "status": "ABSTAIN",
+              "status": "INSUFFICIENT_EVIDENCE",
               "threshold": null,
               "threshold_source": "evidence_status_only_no_acceptance_threshold",
               "unit": "USD/month",
@@ -5549,7 +5569,7 @@
                 }
               ],
               "rule_id": "RULE_HOUSING_COST_BURDEN",
-              "status": "ABSTAIN",
+              "status": "INSUFFICIENT_EVIDENCE",
               "threshold": null,
               "threshold_source": "official_hud_descriptive_indicator",
               "unit": null,
@@ -5570,7 +5590,7 @@
                 }
               ],
               "rule_id": "RULE_INCOME_STABILITY",
-              "status": "ABSTAIN",
+              "status": "INSUFFICIENT_EVIDENCE",
               "threshold": null,
               "threshold_source": "configurable_internal_policy",
               "unit": null,
@@ -5601,7 +5621,7 @@
                 }
               ],
               "rule_id": "RULE_LIQUID_RESERVE_COVERAGE",
-              "status": "ABSTAIN",
+              "status": "INSUFFICIENT_EVIDENCE",
               "threshold": null,
               "threshold_source": "calculation_only_no_acceptance_threshold",
               "unit": null,
@@ -5632,7 +5652,7 @@
                 }
               ],
               "rule_id": "RULE_DOWNSIDE_AFFORDABILITY",
-              "status": "ABSTAIN",
+              "status": "INSUFFICIENT_EVIDENCE",
               "threshold": null,
               "threshold_source": "configurable_internal_scenario",
               "unit": null,
@@ -5653,7 +5673,7 @@
                 }
               ],
               "rule_id": "RULE_CROSS_DOCUMENT_RECONCILIATION",
-              "status": "ABSTAIN",
+              "status": "INSUFFICIENT_EVIDENCE",
               "threshold": null,
               "threshold_source": "configurable_internal_policy",
               "unit": null,
@@ -5683,18 +5703,1166 @@
         },
         "status": "EVALUATED"
       },
-      "household_id": "SAAD-107",
       "rules_and_math": {
         "missing": [
           "confirmed_household_size",
           "confirmed_recurring_income"
         ],
         "reason": "Required confirmed evidence is unavailable in this synthetic packet.",
+        "request": null,
+        "response": null,
         "status": "ABSTAIN"
       }
     }
   ],
-  "pipeline_variant": "rules_and_financial_readiness",
+  "pipeline_variant": "rules_and_renter_budget",
+  "reference_review": {
+    "catalog": {
+      "authoritative_for_calculation": false,
+      "catalog_sha256": "ad20f3c924b21077cf3d43d8a5baaf098c6f2e8394f70710539aee86b5689899",
+      "catalog_version": "REALDOOR-SUPPLEMENTAL-REFERENCES-2026.07.19-v1",
+      "rules_loaded": 25,
+      "runtime_rule_override_enabled": false,
+      "source_note": "User-supplied LIHTC reference excerpts with page locators. The frozen HUD corpus remains the only executable calculation authority."
+    },
+    "decision_boundary": "This aggregate supports renter preparation and qualified human review only. It does not approve, deny, score, rank, predict acceptance, or determine housing eligibility.",
+    "documents_reviewed": 9,
+    "explicit_external_processing_consent": false,
+    "external_research_enabled": false,
+    "reviews": [
+      {
+        "document_id": "SAAD-101-D01",
+        "document_type": "application_summary",
+        "external_narrative": null,
+        "external_research_used": false,
+        "external_sources": [],
+        "extracted_values_sent_externally": false,
+        "matched_rules": [
+          {
+            "match_basis": "allowlisted document type 'application_summary' matched topics: occupancy",
+            "page": 5,
+            "rule": "At least 20% of residential units must be occupied by individuals or families whose income is at or below 50% of the Area Median Gross Income (AMGI).",
+            "rule_id": "SUPPLEMENTAL-REF-001",
+            "title": "20-50 Occupancy Test"
+          },
+          {
+            "match_basis": "allowlisted document type 'application_summary' matched topics: occupancy",
+            "page": 5,
+            "rule": "At least 40% of residential units must be occupied by individuals or families whose income is at or below 60% of the Area Median Gross Income (AMGI).",
+            "rule_id": "SUPPLEMENTAL-REF-002",
+            "title": "40-60 Occupancy Test"
+          },
+          {
+            "match_basis": "allowlisted document type 'application_summary' matched topics: occupancy, qualified",
+            "page": 5,
+            "rule": "A project must satisfy the selected occupancy test throughout the qualified project period.",
+            "rule_id": "SUPPLEMENTAL-REF-003",
+            "title": "Qualified Project Period"
+          },
+          {
+            "match_basis": "allowlisted document type 'application_summary' matched topics: tenant income",
+            "page": 6,
+            "rule": "Tenant income must be determined at least annually.",
+            "rule_id": "SUPPLEMENTAL-REF-004",
+            "title": "Annual Income Verification"
+          },
+          {
+            "match_basis": "allowlisted document type 'application_summary' matched topics: income limit, qualified, tenant income",
+            "page": 6,
+            "rule": "A tenant who initially qualified remains qualified unless income exceeds 140% of the applicable income limit and the next available comparable unit is rented to an over-income tenant.",
+            "rule_id": "SUPPLEMENTAL-REF-005",
+            "title": "Existing Tenant Income Increase"
+          },
+          {
+            "match_basis": "allowlisted document type 'application_summary' matched topics: income limit",
+            "page": 7,
+            "rule": "For deep rent skewed projects, the threshold increases from 140% to 170% of the applicable income limit.",
+            "rule_id": "SUPPLEMENTAL-REF-006",
+            "title": "Deep Rent Skewed Threshold"
+          },
+          {
+            "match_basis": "allowlisted document type 'application_summary' matched topics: low-income",
+            "page": 7,
+            "rule": "At least 15% of low-income units must be occupied by households earning 40% or less of the Area Median Gross Income.",
+            "rule_id": "SUPPLEMENTAL-REF-007",
+            "title": "Deep Rent Skewed Requirement"
+          },
+          {
+            "match_basis": "allowlisted document type 'application_summary' matched topics: income limit, low-income",
+            "page": 7,
+            "rule": "Gross rent for each low-income unit must not exceed 30% of the applicable income limit.",
+            "rule_id": "SUPPLEMENTAL-REF-008",
+            "title": "Deep Rent Gross Rent Limit"
+          },
+          {
+            "match_basis": "allowlisted document type 'application_summary' matched topics: low-income",
+            "page": 7,
+            "rule": "Gross rent for each low-income unit must not exceed one-half of the average gross rent of comparable unrestricted units.",
+            "rule_id": "SUPPLEMENTAL-REF-009",
+            "title": "Comparable Rent Rule"
+          },
+          {
+            "match_basis": "allowlisted document type 'application_summary' matched topics: income limit",
+            "page": 9,
+            "rule": "Gross rent must not exceed 30% of the applicable imputed income limitation.",
+            "rule_id": "SUPPLEMENTAL-REF-011",
+            "title": "Rent Restricted Unit"
+          },
+          {
+            "match_basis": "allowlisted document type 'application_summary' matched topics: low-income, qualified",
+            "page": 11,
+            "rule": "A unit remains a low-income unit if occupants originally qualified and the unit continues to be rent restricted.",
+            "rule_id": "SUPPLEMENTAL-REF-012",
+            "title": "Income Increase Treatment"
+          },
+          {
+            "match_basis": "allowlisted document type 'application_summary' matched topics: low-income, tenant income",
+            "page": 11,
+            "rule": "If tenant income exceeds 140% of the limit, the next available comparable unit must be rented to a qualifying low-income household.",
+            "rule_id": "SUPPLEMENTAL-REF-013",
+            "title": "Next Available Unit Rule"
+          },
+          {
+            "match_basis": "allowlisted document type 'application_summary' matched topics: low-income",
+            "page": 12,
+            "rule": "A project must satisfy the low-income housing requirements by the end of the first year of the credit period.",
+            "rule_id": "SUPPLEMENTAL-REF-014",
+            "title": "Building Qualification Deadline"
+          },
+          {
+            "match_basis": "allowlisted document type 'application_summary' matched topics: low-income, tenant income",
+            "page": 13,
+            "rule": "The Secretary may waive annual tenant income recertification if the entire building is occupied by low-income tenants.",
+            "rule_id": "SUPPLEMENTAL-REF-016",
+            "title": "Annual Recertification Waiver"
+          },
+          {
+            "match_basis": "allowlisted document type 'application_summary' matched topics: income limit",
+            "page": 3,
+            "rule": "For non-impacted MTSPs, the income limit may never decline and is the highest value reached during the project's qualifying period.",
+            "rule_id": "SUPPLEMENTAL-REF-017",
+            "title": "MTSP Income Limit Hold Harmless"
+          },
+          {
+            "match_basis": "allowlisted document type 'application_summary' matched topics: income limit, low-income",
+            "page": 3,
+            "rule": "The MTSP 60% income limit is calculated as 1.2 times the MTSP Very Low-Income Limit (VLIL).",
+            "rule_id": "SUPPLEMENTAL-REF-018",
+            "title": "MTSP 60% Income Limit"
+          },
+          {
+            "match_basis": "allowlisted document type 'application_summary' matched topics: income limit, low-income",
+            "page": 18,
+            "rule": "HUD initially sets the four-person very low-income limit at 50% of Area Median Family Income before applying statutory adjustments.",
+            "rule_id": "SUPPLEMENTAL-REF-021",
+            "title": "Four-Person Income Limit"
+          },
+          {
+            "match_basis": "allowlisted document type 'application_summary' matched topics: income limit, low-income",
+            "page": 18,
+            "rule": "HUD increases very low-income limits when rental housing costs are unusually high relative to median family income.",
+            "rule_id": "SUPPLEMENTAL-REF-022",
+            "title": "High Housing Cost Adjustment"
+          },
+          {
+            "match_basis": "allowlisted document type 'application_summary' matched topics: income limit, low-income",
+            "page": 18,
+            "rule": "HUD reduces very low-income limits in unusually high-income areas subject to statutory minimums.",
+            "rule_id": "SUPPLEMENTAL-REF-023",
+            "title": "High Income Area Adjustment"
+          },
+          {
+            "match_basis": "allowlisted document type 'application_summary' matched topics: income limit",
+            "page": 19,
+            "rule": "Income limits may not be lower than the state's nonmetropolitan median family income level.",
+            "rule_id": "SUPPLEMENTAL-REF-024",
+            "title": "Nonmetropolitan Minimum"
+          },
+          {
+            "match_basis": "allowlisted document type 'application_summary' matched topics: income limit",
+            "page": 19,
+            "rule": "For FY2026, annual income limit increases are capped at 10%.",
+            "rule_id": "SUPPLEMENTAL-REF-025",
+            "title": "Annual Increase Cap"
+          }
+        ],
+        "message": "Supplemental matches are available for human review.",
+        "status": "MATCHES_FOUND",
+        "untrusted_document_text_ignored": false
+      },
+      {
+        "document_id": "SAAD-101-D02",
+        "document_type": "pay_stub",
+        "external_narrative": null,
+        "external_research_used": false,
+        "external_sources": [],
+        "extracted_values_sent_externally": false,
+        "matched_rules": [
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income",
+            "page": 5,
+            "rule": "At least 20% of residential units must be occupied by individuals or families whose income is at or below 50% of the Area Median Gross Income (AMGI).",
+            "rule_id": "SUPPLEMENTAL-REF-001",
+            "title": "20-50 Occupancy Test"
+          },
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income",
+            "page": 5,
+            "rule": "At least 40% of residential units must be occupied by individuals or families whose income is at or below 60% of the Area Median Gross Income (AMGI).",
+            "rule_id": "SUPPLEMENTAL-REF-002",
+            "title": "40-60 Occupancy Test"
+          },
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income, tenant",
+            "page": 6,
+            "rule": "Tenant income must be determined at least annually.",
+            "rule_id": "SUPPLEMENTAL-REF-004",
+            "title": "Annual Income Verification"
+          },
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income, tenant",
+            "page": 6,
+            "rule": "A tenant who initially qualified remains qualified unless income exceeds 140% of the applicable income limit and the next available comparable unit is rented to an over-income tenant.",
+            "rule_id": "SUPPLEMENTAL-REF-005",
+            "title": "Existing Tenant Income Increase"
+          },
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income",
+            "page": 7,
+            "rule": "For deep rent skewed projects, the threshold increases from 140% to 170% of the applicable income limit.",
+            "rule_id": "SUPPLEMENTAL-REF-006",
+            "title": "Deep Rent Skewed Threshold"
+          },
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income",
+            "page": 7,
+            "rule": "At least 15% of low-income units must be occupied by households earning 40% or less of the Area Median Gross Income.",
+            "rule_id": "SUPPLEMENTAL-REF-007",
+            "title": "Deep Rent Skewed Requirement"
+          },
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income",
+            "page": 7,
+            "rule": "Gross rent for each low-income unit must not exceed 30% of the applicable income limit.",
+            "rule_id": "SUPPLEMENTAL-REF-008",
+            "title": "Deep Rent Gross Rent Limit"
+          },
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income",
+            "page": 7,
+            "rule": "Gross rent for each low-income unit must not exceed one-half of the average gross rent of comparable unrestricted units.",
+            "rule_id": "SUPPLEMENTAL-REF-009",
+            "title": "Comparable Rent Rule"
+          },
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income",
+            "page": 9,
+            "rule": "Gross rent must not exceed 30% of the applicable imputed income limitation.",
+            "rule_id": "SUPPLEMENTAL-REF-011",
+            "title": "Rent Restricted Unit"
+          },
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income",
+            "page": 11,
+            "rule": "A unit remains a low-income unit if occupants originally qualified and the unit continues to be rent restricted.",
+            "rule_id": "SUPPLEMENTAL-REF-012",
+            "title": "Income Increase Treatment"
+          },
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income, tenant",
+            "page": 11,
+            "rule": "If tenant income exceeds 140% of the limit, the next available comparable unit must be rented to a qualifying low-income household.",
+            "rule_id": "SUPPLEMENTAL-REF-013",
+            "title": "Next Available Unit Rule"
+          },
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income",
+            "page": 12,
+            "rule": "A project must satisfy the low-income housing requirements by the end of the first year of the credit period.",
+            "rule_id": "SUPPLEMENTAL-REF-014",
+            "title": "Building Qualification Deadline"
+          },
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income, recertification, tenant",
+            "page": 13,
+            "rule": "The Secretary may waive annual tenant income recertification if the entire building is occupied by low-income tenants.",
+            "rule_id": "SUPPLEMENTAL-REF-016",
+            "title": "Annual Recertification Waiver"
+          },
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income",
+            "page": 3,
+            "rule": "For non-impacted MTSPs, the income limit may never decline and is the highest value reached during the project's qualifying period.",
+            "rule_id": "SUPPLEMENTAL-REF-017",
+            "title": "MTSP Income Limit Hold Harmless"
+          },
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income",
+            "page": 3,
+            "rule": "The MTSP 60% income limit is calculated as 1.2 times the MTSP Very Low-Income Limit (VLIL).",
+            "rule_id": "SUPPLEMENTAL-REF-018",
+            "title": "MTSP 60% Income Limit"
+          },
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income",
+            "page": 4,
+            "rule": "For HUD impacted projects, VLIL equals the greater of the previous impacted VLIL or the FY2008 VLIL adjusted by median family income growth.",
+            "rule_id": "SUPPLEMENTAL-REF-019",
+            "title": "Impacted Project VLIL"
+          },
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income",
+            "page": 17,
+            "rule": "Area Median Gross Income for MTSP projects after 2008 may not be lower than the previous year's determination.",
+            "rule_id": "SUPPLEMENTAL-REF-020",
+            "title": "Hold Harmless After 2008"
+          },
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income",
+            "page": 18,
+            "rule": "HUD initially sets the four-person very low-income limit at 50% of Area Median Family Income before applying statutory adjustments.",
+            "rule_id": "SUPPLEMENTAL-REF-021",
+            "title": "Four-Person Income Limit"
+          },
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income",
+            "page": 18,
+            "rule": "HUD increases very low-income limits when rental housing costs are unusually high relative to median family income.",
+            "rule_id": "SUPPLEMENTAL-REF-022",
+            "title": "High Housing Cost Adjustment"
+          },
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income",
+            "page": 18,
+            "rule": "HUD reduces very low-income limits in unusually high-income areas subject to statutory minimums.",
+            "rule_id": "SUPPLEMENTAL-REF-023",
+            "title": "High Income Area Adjustment"
+          },
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income",
+            "page": 19,
+            "rule": "Income limits may not be lower than the state's nonmetropolitan median family income level.",
+            "rule_id": "SUPPLEMENTAL-REF-024",
+            "title": "Nonmetropolitan Minimum"
+          },
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income",
+            "page": 19,
+            "rule": "For FY2026, annual income limit increases are capped at 10%.",
+            "rule_id": "SUPPLEMENTAL-REF-025",
+            "title": "Annual Increase Cap"
+          }
+        ],
+        "message": "Supplemental matches are available for human review.",
+        "status": "MATCHES_FOUND",
+        "untrusted_document_text_ignored": false
+      },
+      {
+        "document_id": "SAAD-102-D01",
+        "document_type": "benefit_letter",
+        "external_narrative": null,
+        "external_research_used": false,
+        "external_sources": [],
+        "extracted_values_sent_externally": false,
+        "matched_rules": [
+          {
+            "match_basis": "allowlisted document type 'benefit_letter' matched topics: income",
+            "page": 5,
+            "rule": "At least 20% of residential units must be occupied by individuals or families whose income is at or below 50% of the Area Median Gross Income (AMGI).",
+            "rule_id": "SUPPLEMENTAL-REF-001",
+            "title": "20-50 Occupancy Test"
+          },
+          {
+            "match_basis": "allowlisted document type 'benefit_letter' matched topics: income",
+            "page": 5,
+            "rule": "At least 40% of residential units must be occupied by individuals or families whose income is at or below 60% of the Area Median Gross Income (AMGI).",
+            "rule_id": "SUPPLEMENTAL-REF-002",
+            "title": "40-60 Occupancy Test"
+          },
+          {
+            "match_basis": "allowlisted document type 'benefit_letter' matched topics: income, tenant",
+            "page": 6,
+            "rule": "Tenant income must be determined at least annually.",
+            "rule_id": "SUPPLEMENTAL-REF-004",
+            "title": "Annual Income Verification"
+          },
+          {
+            "match_basis": "allowlisted document type 'benefit_letter' matched topics: income, tenant",
+            "page": 6,
+            "rule": "A tenant who initially qualified remains qualified unless income exceeds 140% of the applicable income limit and the next available comparable unit is rented to an over-income tenant.",
+            "rule_id": "SUPPLEMENTAL-REF-005",
+            "title": "Existing Tenant Income Increase"
+          },
+          {
+            "match_basis": "allowlisted document type 'benefit_letter' matched topics: income",
+            "page": 7,
+            "rule": "For deep rent skewed projects, the threshold increases from 140% to 170% of the applicable income limit.",
+            "rule_id": "SUPPLEMENTAL-REF-006",
+            "title": "Deep Rent Skewed Threshold"
+          },
+          {
+            "match_basis": "allowlisted document type 'benefit_letter' matched topics: income",
+            "page": 7,
+            "rule": "At least 15% of low-income units must be occupied by households earning 40% or less of the Area Median Gross Income.",
+            "rule_id": "SUPPLEMENTAL-REF-007",
+            "title": "Deep Rent Skewed Requirement"
+          },
+          {
+            "match_basis": "allowlisted document type 'benefit_letter' matched topics: income",
+            "page": 7,
+            "rule": "Gross rent for each low-income unit must not exceed 30% of the applicable income limit.",
+            "rule_id": "SUPPLEMENTAL-REF-008",
+            "title": "Deep Rent Gross Rent Limit"
+          },
+          {
+            "match_basis": "allowlisted document type 'benefit_letter' matched topics: income",
+            "page": 7,
+            "rule": "Gross rent for each low-income unit must not exceed one-half of the average gross rent of comparable unrestricted units.",
+            "rule_id": "SUPPLEMENTAL-REF-009",
+            "title": "Comparable Rent Rule"
+          },
+          {
+            "match_basis": "allowlisted document type 'benefit_letter' matched topics: income",
+            "page": 9,
+            "rule": "Gross rent must not exceed 30% of the applicable imputed income limitation.",
+            "rule_id": "SUPPLEMENTAL-REF-011",
+            "title": "Rent Restricted Unit"
+          },
+          {
+            "match_basis": "allowlisted document type 'benefit_letter' matched topics: income",
+            "page": 11,
+            "rule": "A unit remains a low-income unit if occupants originally qualified and the unit continues to be rent restricted.",
+            "rule_id": "SUPPLEMENTAL-REF-012",
+            "title": "Income Increase Treatment"
+          },
+          {
+            "match_basis": "allowlisted document type 'benefit_letter' matched topics: income, tenant",
+            "page": 11,
+            "rule": "If tenant income exceeds 140% of the limit, the next available comparable unit must be rented to a qualifying low-income household.",
+            "rule_id": "SUPPLEMENTAL-REF-013",
+            "title": "Next Available Unit Rule"
+          },
+          {
+            "match_basis": "allowlisted document type 'benefit_letter' matched topics: income",
+            "page": 12,
+            "rule": "A project must satisfy the low-income housing requirements by the end of the first year of the credit period.",
+            "rule_id": "SUPPLEMENTAL-REF-014",
+            "title": "Building Qualification Deadline"
+          },
+          {
+            "match_basis": "allowlisted document type 'benefit_letter' matched topics: income, recertification, tenant",
+            "page": 13,
+            "rule": "The Secretary may waive annual tenant income recertification if the entire building is occupied by low-income tenants.",
+            "rule_id": "SUPPLEMENTAL-REF-016",
+            "title": "Annual Recertification Waiver"
+          },
+          {
+            "match_basis": "allowlisted document type 'benefit_letter' matched topics: income",
+            "page": 3,
+            "rule": "For non-impacted MTSPs, the income limit may never decline and is the highest value reached during the project's qualifying period.",
+            "rule_id": "SUPPLEMENTAL-REF-017",
+            "title": "MTSP Income Limit Hold Harmless"
+          },
+          {
+            "match_basis": "allowlisted document type 'benefit_letter' matched topics: income",
+            "page": 3,
+            "rule": "The MTSP 60% income limit is calculated as 1.2 times the MTSP Very Low-Income Limit (VLIL).",
+            "rule_id": "SUPPLEMENTAL-REF-018",
+            "title": "MTSP 60% Income Limit"
+          },
+          {
+            "match_basis": "allowlisted document type 'benefit_letter' matched topics: income",
+            "page": 4,
+            "rule": "For HUD impacted projects, VLIL equals the greater of the previous impacted VLIL or the FY2008 VLIL adjusted by median family income growth.",
+            "rule_id": "SUPPLEMENTAL-REF-019",
+            "title": "Impacted Project VLIL"
+          },
+          {
+            "match_basis": "allowlisted document type 'benefit_letter' matched topics: income",
+            "page": 17,
+            "rule": "Area Median Gross Income for MTSP projects after 2008 may not be lower than the previous year's determination.",
+            "rule_id": "SUPPLEMENTAL-REF-020",
+            "title": "Hold Harmless After 2008"
+          },
+          {
+            "match_basis": "allowlisted document type 'benefit_letter' matched topics: income",
+            "page": 18,
+            "rule": "HUD initially sets the four-person very low-income limit at 50% of Area Median Family Income before applying statutory adjustments.",
+            "rule_id": "SUPPLEMENTAL-REF-021",
+            "title": "Four-Person Income Limit"
+          },
+          {
+            "match_basis": "allowlisted document type 'benefit_letter' matched topics: income",
+            "page": 18,
+            "rule": "HUD increases very low-income limits when rental housing costs are unusually high relative to median family income.",
+            "rule_id": "SUPPLEMENTAL-REF-022",
+            "title": "High Housing Cost Adjustment"
+          },
+          {
+            "match_basis": "allowlisted document type 'benefit_letter' matched topics: income",
+            "page": 18,
+            "rule": "HUD reduces very low-income limits in unusually high-income areas subject to statutory minimums.",
+            "rule_id": "SUPPLEMENTAL-REF-023",
+            "title": "High Income Area Adjustment"
+          },
+          {
+            "match_basis": "allowlisted document type 'benefit_letter' matched topics: income",
+            "page": 19,
+            "rule": "Income limits may not be lower than the state's nonmetropolitan median family income level.",
+            "rule_id": "SUPPLEMENTAL-REF-024",
+            "title": "Nonmetropolitan Minimum"
+          },
+          {
+            "match_basis": "allowlisted document type 'benefit_letter' matched topics: income",
+            "page": 19,
+            "rule": "For FY2026, annual income limit increases are capped at 10%.",
+            "rule_id": "SUPPLEMENTAL-REF-025",
+            "title": "Annual Increase Cap"
+          }
+        ],
+        "message": "Supplemental matches are available for human review.",
+        "status": "MATCHES_FOUND",
+        "untrusted_document_text_ignored": false
+      },
+      {
+        "document_id": "SAAD-103-D01",
+        "document_type": "employment_letter",
+        "external_narrative": null,
+        "external_research_used": false,
+        "external_sources": [],
+        "extracted_values_sent_externally": false,
+        "matched_rules": [
+          {
+            "match_basis": "allowlisted document type 'employment_letter' matched topics: income",
+            "page": 5,
+            "rule": "At least 20% of residential units must be occupied by individuals or families whose income is at or below 50% of the Area Median Gross Income (AMGI).",
+            "rule_id": "SUPPLEMENTAL-REF-001",
+            "title": "20-50 Occupancy Test"
+          },
+          {
+            "match_basis": "allowlisted document type 'employment_letter' matched topics: income",
+            "page": 5,
+            "rule": "At least 40% of residential units must be occupied by individuals or families whose income is at or below 60% of the Area Median Gross Income (AMGI).",
+            "rule_id": "SUPPLEMENTAL-REF-002",
+            "title": "40-60 Occupancy Test"
+          },
+          {
+            "match_basis": "allowlisted document type 'employment_letter' matched topics: income, tenant",
+            "page": 6,
+            "rule": "Tenant income must be determined at least annually.",
+            "rule_id": "SUPPLEMENTAL-REF-004",
+            "title": "Annual Income Verification"
+          },
+          {
+            "match_basis": "allowlisted document type 'employment_letter' matched topics: income, tenant",
+            "page": 6,
+            "rule": "A tenant who initially qualified remains qualified unless income exceeds 140% of the applicable income limit and the next available comparable unit is rented to an over-income tenant.",
+            "rule_id": "SUPPLEMENTAL-REF-005",
+            "title": "Existing Tenant Income Increase"
+          },
+          {
+            "match_basis": "allowlisted document type 'employment_letter' matched topics: income",
+            "page": 7,
+            "rule": "For deep rent skewed projects, the threshold increases from 140% to 170% of the applicable income limit.",
+            "rule_id": "SUPPLEMENTAL-REF-006",
+            "title": "Deep Rent Skewed Threshold"
+          },
+          {
+            "match_basis": "allowlisted document type 'employment_letter' matched topics: income",
+            "page": 7,
+            "rule": "At least 15% of low-income units must be occupied by households earning 40% or less of the Area Median Gross Income.",
+            "rule_id": "SUPPLEMENTAL-REF-007",
+            "title": "Deep Rent Skewed Requirement"
+          },
+          {
+            "match_basis": "allowlisted document type 'employment_letter' matched topics: income",
+            "page": 7,
+            "rule": "Gross rent for each low-income unit must not exceed 30% of the applicable income limit.",
+            "rule_id": "SUPPLEMENTAL-REF-008",
+            "title": "Deep Rent Gross Rent Limit"
+          },
+          {
+            "match_basis": "allowlisted document type 'employment_letter' matched topics: income",
+            "page": 7,
+            "rule": "Gross rent for each low-income unit must not exceed one-half of the average gross rent of comparable unrestricted units.",
+            "rule_id": "SUPPLEMENTAL-REF-009",
+            "title": "Comparable Rent Rule"
+          },
+          {
+            "match_basis": "allowlisted document type 'employment_letter' matched topics: income",
+            "page": 9,
+            "rule": "Gross rent must not exceed 30% of the applicable imputed income limitation.",
+            "rule_id": "SUPPLEMENTAL-REF-011",
+            "title": "Rent Restricted Unit"
+          },
+          {
+            "match_basis": "allowlisted document type 'employment_letter' matched topics: income",
+            "page": 11,
+            "rule": "A unit remains a low-income unit if occupants originally qualified and the unit continues to be rent restricted.",
+            "rule_id": "SUPPLEMENTAL-REF-012",
+            "title": "Income Increase Treatment"
+          },
+          {
+            "match_basis": "allowlisted document type 'employment_letter' matched topics: income, tenant",
+            "page": 11,
+            "rule": "If tenant income exceeds 140% of the limit, the next available comparable unit must be rented to a qualifying low-income household.",
+            "rule_id": "SUPPLEMENTAL-REF-013",
+            "title": "Next Available Unit Rule"
+          },
+          {
+            "match_basis": "allowlisted document type 'employment_letter' matched topics: income",
+            "page": 12,
+            "rule": "A project must satisfy the low-income housing requirements by the end of the first year of the credit period.",
+            "rule_id": "SUPPLEMENTAL-REF-014",
+            "title": "Building Qualification Deadline"
+          },
+          {
+            "match_basis": "allowlisted document type 'employment_letter' matched topics: income, recertification, tenant",
+            "page": 13,
+            "rule": "The Secretary may waive annual tenant income recertification if the entire building is occupied by low-income tenants.",
+            "rule_id": "SUPPLEMENTAL-REF-016",
+            "title": "Annual Recertification Waiver"
+          },
+          {
+            "match_basis": "allowlisted document type 'employment_letter' matched topics: income",
+            "page": 3,
+            "rule": "For non-impacted MTSPs, the income limit may never decline and is the highest value reached during the project's qualifying period.",
+            "rule_id": "SUPPLEMENTAL-REF-017",
+            "title": "MTSP Income Limit Hold Harmless"
+          },
+          {
+            "match_basis": "allowlisted document type 'employment_letter' matched topics: income",
+            "page": 3,
+            "rule": "The MTSP 60% income limit is calculated as 1.2 times the MTSP Very Low-Income Limit (VLIL).",
+            "rule_id": "SUPPLEMENTAL-REF-018",
+            "title": "MTSP 60% Income Limit"
+          },
+          {
+            "match_basis": "allowlisted document type 'employment_letter' matched topics: income",
+            "page": 4,
+            "rule": "For HUD impacted projects, VLIL equals the greater of the previous impacted VLIL or the FY2008 VLIL adjusted by median family income growth.",
+            "rule_id": "SUPPLEMENTAL-REF-019",
+            "title": "Impacted Project VLIL"
+          },
+          {
+            "match_basis": "allowlisted document type 'employment_letter' matched topics: income",
+            "page": 17,
+            "rule": "Area Median Gross Income for MTSP projects after 2008 may not be lower than the previous year's determination.",
+            "rule_id": "SUPPLEMENTAL-REF-020",
+            "title": "Hold Harmless After 2008"
+          },
+          {
+            "match_basis": "allowlisted document type 'employment_letter' matched topics: income",
+            "page": 18,
+            "rule": "HUD initially sets the four-person very low-income limit at 50% of Area Median Family Income before applying statutory adjustments.",
+            "rule_id": "SUPPLEMENTAL-REF-021",
+            "title": "Four-Person Income Limit"
+          },
+          {
+            "match_basis": "allowlisted document type 'employment_letter' matched topics: income",
+            "page": 18,
+            "rule": "HUD increases very low-income limits when rental housing costs are unusually high relative to median family income.",
+            "rule_id": "SUPPLEMENTAL-REF-022",
+            "title": "High Housing Cost Adjustment"
+          },
+          {
+            "match_basis": "allowlisted document type 'employment_letter' matched topics: income",
+            "page": 18,
+            "rule": "HUD reduces very low-income limits in unusually high-income areas subject to statutory minimums.",
+            "rule_id": "SUPPLEMENTAL-REF-023",
+            "title": "High Income Area Adjustment"
+          },
+          {
+            "match_basis": "allowlisted document type 'employment_letter' matched topics: income",
+            "page": 19,
+            "rule": "Income limits may not be lower than the state's nonmetropolitan median family income level.",
+            "rule_id": "SUPPLEMENTAL-REF-024",
+            "title": "Nonmetropolitan Minimum"
+          },
+          {
+            "match_basis": "allowlisted document type 'employment_letter' matched topics: income",
+            "page": 19,
+            "rule": "For FY2026, annual income limit increases are capped at 10%.",
+            "rule_id": "SUPPLEMENTAL-REF-025",
+            "title": "Annual Increase Cap"
+          }
+        ],
+        "message": "Supplemental matches are available for human review.",
+        "status": "MATCHES_FOUND",
+        "untrusted_document_text_ignored": false
+      },
+      {
+        "document_id": "SAAD-104-D01",
+        "document_type": "pay_stub",
+        "external_narrative": null,
+        "external_research_used": false,
+        "external_sources": [],
+        "extracted_values_sent_externally": false,
+        "matched_rules": [
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income",
+            "page": 5,
+            "rule": "At least 20% of residential units must be occupied by individuals or families whose income is at or below 50% of the Area Median Gross Income (AMGI).",
+            "rule_id": "SUPPLEMENTAL-REF-001",
+            "title": "20-50 Occupancy Test"
+          },
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income",
+            "page": 5,
+            "rule": "At least 40% of residential units must be occupied by individuals or families whose income is at or below 60% of the Area Median Gross Income (AMGI).",
+            "rule_id": "SUPPLEMENTAL-REF-002",
+            "title": "40-60 Occupancy Test"
+          },
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income, tenant",
+            "page": 6,
+            "rule": "Tenant income must be determined at least annually.",
+            "rule_id": "SUPPLEMENTAL-REF-004",
+            "title": "Annual Income Verification"
+          },
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income, tenant",
+            "page": 6,
+            "rule": "A tenant who initially qualified remains qualified unless income exceeds 140% of the applicable income limit and the next available comparable unit is rented to an over-income tenant.",
+            "rule_id": "SUPPLEMENTAL-REF-005",
+            "title": "Existing Tenant Income Increase"
+          },
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income",
+            "page": 7,
+            "rule": "For deep rent skewed projects, the threshold increases from 140% to 170% of the applicable income limit.",
+            "rule_id": "SUPPLEMENTAL-REF-006",
+            "title": "Deep Rent Skewed Threshold"
+          },
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income",
+            "page": 7,
+            "rule": "At least 15% of low-income units must be occupied by households earning 40% or less of the Area Median Gross Income.",
+            "rule_id": "SUPPLEMENTAL-REF-007",
+            "title": "Deep Rent Skewed Requirement"
+          },
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income",
+            "page": 7,
+            "rule": "Gross rent for each low-income unit must not exceed 30% of the applicable income limit.",
+            "rule_id": "SUPPLEMENTAL-REF-008",
+            "title": "Deep Rent Gross Rent Limit"
+          },
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income",
+            "page": 7,
+            "rule": "Gross rent for each low-income unit must not exceed one-half of the average gross rent of comparable unrestricted units.",
+            "rule_id": "SUPPLEMENTAL-REF-009",
+            "title": "Comparable Rent Rule"
+          },
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income",
+            "page": 9,
+            "rule": "Gross rent must not exceed 30% of the applicable imputed income limitation.",
+            "rule_id": "SUPPLEMENTAL-REF-011",
+            "title": "Rent Restricted Unit"
+          },
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income",
+            "page": 11,
+            "rule": "A unit remains a low-income unit if occupants originally qualified and the unit continues to be rent restricted.",
+            "rule_id": "SUPPLEMENTAL-REF-012",
+            "title": "Income Increase Treatment"
+          },
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income, tenant",
+            "page": 11,
+            "rule": "If tenant income exceeds 140% of the limit, the next available comparable unit must be rented to a qualifying low-income household.",
+            "rule_id": "SUPPLEMENTAL-REF-013",
+            "title": "Next Available Unit Rule"
+          },
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income",
+            "page": 12,
+            "rule": "A project must satisfy the low-income housing requirements by the end of the first year of the credit period.",
+            "rule_id": "SUPPLEMENTAL-REF-014",
+            "title": "Building Qualification Deadline"
+          },
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income, recertification, tenant",
+            "page": 13,
+            "rule": "The Secretary may waive annual tenant income recertification if the entire building is occupied by low-income tenants.",
+            "rule_id": "SUPPLEMENTAL-REF-016",
+            "title": "Annual Recertification Waiver"
+          },
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income",
+            "page": 3,
+            "rule": "For non-impacted MTSPs, the income limit may never decline and is the highest value reached during the project's qualifying period.",
+            "rule_id": "SUPPLEMENTAL-REF-017",
+            "title": "MTSP Income Limit Hold Harmless"
+          },
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income",
+            "page": 3,
+            "rule": "The MTSP 60% income limit is calculated as 1.2 times the MTSP Very Low-Income Limit (VLIL).",
+            "rule_id": "SUPPLEMENTAL-REF-018",
+            "title": "MTSP 60% Income Limit"
+          },
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income",
+            "page": 4,
+            "rule": "For HUD impacted projects, VLIL equals the greater of the previous impacted VLIL or the FY2008 VLIL adjusted by median family income growth.",
+            "rule_id": "SUPPLEMENTAL-REF-019",
+            "title": "Impacted Project VLIL"
+          },
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income",
+            "page": 17,
+            "rule": "Area Median Gross Income for MTSP projects after 2008 may not be lower than the previous year's determination.",
+            "rule_id": "SUPPLEMENTAL-REF-020",
+            "title": "Hold Harmless After 2008"
+          },
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income",
+            "page": 18,
+            "rule": "HUD initially sets the four-person very low-income limit at 50% of Area Median Family Income before applying statutory adjustments.",
+            "rule_id": "SUPPLEMENTAL-REF-021",
+            "title": "Four-Person Income Limit"
+          },
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income",
+            "page": 18,
+            "rule": "HUD increases very low-income limits when rental housing costs are unusually high relative to median family income.",
+            "rule_id": "SUPPLEMENTAL-REF-022",
+            "title": "High Housing Cost Adjustment"
+          },
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income",
+            "page": 18,
+            "rule": "HUD reduces very low-income limits in unusually high-income areas subject to statutory minimums.",
+            "rule_id": "SUPPLEMENTAL-REF-023",
+            "title": "High Income Area Adjustment"
+          },
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income",
+            "page": 19,
+            "rule": "Income limits may not be lower than the state's nonmetropolitan median family income level.",
+            "rule_id": "SUPPLEMENTAL-REF-024",
+            "title": "Nonmetropolitan Minimum"
+          },
+          {
+            "match_basis": "allowlisted document type 'pay_stub' matched topics: income",
+            "page": 19,
+            "rule": "For FY2026, annual income limit increases are capped at 10%.",
+            "rule_id": "SUPPLEMENTAL-REF-025",
+            "title": "Annual Increase Cap"
+          }
+        ],
+        "message": "Supplemental matches are available for human review.",
+        "status": "MATCHES_FOUND",
+        "untrusted_document_text_ignored": true
+      },
+      {
+        "document_id": "SAAD-105-D01",
+        "document_type": "rent_statement",
+        "external_narrative": null,
+        "external_research_used": false,
+        "external_sources": [],
+        "extracted_values_sent_externally": false,
+        "matched_rules": [
+          {
+            "match_basis": "allowlisted document type 'rent_statement' matched topics: rent",
+            "page": 6,
+            "rule": "A tenant who initially qualified remains qualified unless income exceeds 140% of the applicable income limit and the next available comparable unit is rented to an over-income tenant.",
+            "rule_id": "SUPPLEMENTAL-REF-005",
+            "title": "Existing Tenant Income Increase"
+          },
+          {
+            "match_basis": "allowlisted document type 'rent_statement' matched topics: rent",
+            "page": 7,
+            "rule": "For deep rent skewed projects, the threshold increases from 140% to 170% of the applicable income limit.",
+            "rule_id": "SUPPLEMENTAL-REF-006",
+            "title": "Deep Rent Skewed Threshold"
+          },
+          {
+            "match_basis": "allowlisted document type 'rent_statement' matched topics: rent",
+            "page": 7,
+            "rule": "At least 15% of low-income units must be occupied by households earning 40% or less of the Area Median Gross Income.",
+            "rule_id": "SUPPLEMENTAL-REF-007",
+            "title": "Deep Rent Skewed Requirement"
+          },
+          {
+            "match_basis": "allowlisted document type 'rent_statement' matched topics: gross rent, rent",
+            "page": 7,
+            "rule": "Gross rent for each low-income unit must not exceed 30% of the applicable income limit.",
+            "rule_id": "SUPPLEMENTAL-REF-008",
+            "title": "Deep Rent Gross Rent Limit"
+          },
+          {
+            "match_basis": "allowlisted document type 'rent_statement' matched topics: gross rent, rent",
+            "page": 7,
+            "rule": "Gross rent for each low-income unit must not exceed one-half of the average gross rent of comparable unrestricted units.",
+            "rule_id": "SUPPLEMENTAL-REF-009",
+            "title": "Comparable Rent Rule"
+          },
+          {
+            "match_basis": "allowlisted document type 'rent_statement' matched topics: gross rent, rent",
+            "page": 9,
+            "rule": "Gross rent must not exceed 30% of the applicable imputed income limitation.",
+            "rule_id": "SUPPLEMENTAL-REF-011",
+            "title": "Rent Restricted Unit"
+          },
+          {
+            "match_basis": "allowlisted document type 'rent_statement' matched topics: rent",
+            "page": 11,
+            "rule": "A unit remains a low-income unit if occupants originally qualified and the unit continues to be rent restricted.",
+            "rule_id": "SUPPLEMENTAL-REF-012",
+            "title": "Income Increase Treatment"
+          },
+          {
+            "match_basis": "allowlisted document type 'rent_statement' matched topics: rent",
+            "page": 11,
+            "rule": "If tenant income exceeds 140% of the limit, the next available comparable unit must be rented to a qualifying low-income household.",
+            "rule_id": "SUPPLEMENTAL-REF-013",
+            "title": "Next Available Unit Rule"
+          },
+          {
+            "match_basis": "allowlisted document type 'rent_statement' matched topics: rent, rent-restricted",
+            "page": 13,
+            "rule": "Buildings may be treated as a single project if all dwelling units are rent-restricted.",
+            "rule_id": "SUPPLEMENTAL-REF-015",
+            "title": "Scattered Site Projects"
+          },
+          {
+            "match_basis": "allowlisted document type 'rent_statement' matched topics: rent",
+            "page": 18,
+            "rule": "HUD increases very low-income limits when rental housing costs are unusually high relative to median family income.",
+            "rule_id": "SUPPLEMENTAL-REF-022",
+            "title": "High Housing Cost Adjustment"
+          }
+        ],
+        "message": "Supplemental matches are available for human review.",
+        "status": "MATCHES_FOUND",
+        "untrusted_document_text_ignored": false
+      },
+      {
+        "document_id": "SAAD-106-D01",
+        "document_type": "bank_deposit_statement",
+        "external_narrative": null,
+        "external_research_used": false,
+        "external_sources": [],
+        "extracted_values_sent_externally": false,
+        "matched_rules": [
+          {
+            "match_basis": "allowlisted document type 'bank_deposit_statement' matched topics: income verification, tenant income",
+            "page": 6,
+            "rule": "Tenant income must be determined at least annually.",
+            "rule_id": "SUPPLEMENTAL-REF-004",
+            "title": "Annual Income Verification"
+          },
+          {
+            "match_basis": "allowlisted document type 'bank_deposit_statement' matched topics: tenant income",
+            "page": 6,
+            "rule": "A tenant who initially qualified remains qualified unless income exceeds 140% of the applicable income limit and the next available comparable unit is rented to an over-income tenant.",
+            "rule_id": "SUPPLEMENTAL-REF-005",
+            "title": "Existing Tenant Income Increase"
+          },
+          {
+            "match_basis": "allowlisted document type 'bank_deposit_statement' matched topics: tenant income",
+            "page": 11,
+            "rule": "If tenant income exceeds 140% of the limit, the next available comparable unit must be rented to a qualifying low-income household.",
+            "rule_id": "SUPPLEMENTAL-REF-013",
+            "title": "Next Available Unit Rule"
+          },
+          {
+            "match_basis": "allowlisted document type 'bank_deposit_statement' matched topics: recertification, tenant income",
+            "page": 13,
+            "rule": "The Secretary may waive annual tenant income recertification if the entire building is occupied by low-income tenants.",
+            "rule_id": "SUPPLEMENTAL-REF-016",
+            "title": "Annual Recertification Waiver"
+          }
+        ],
+        "message": "Supplemental matches are available for human review.",
+        "status": "MATCHES_FOUND",
+        "untrusted_document_text_ignored": false
+      },
+      {
+        "document_id": "SAAD-106-D02",
+        "document_type": "self_employment_statement",
+        "external_narrative": null,
+        "external_research_used": false,
+        "external_sources": [],
+        "extracted_values_sent_externally": false,
+        "matched_rules": [
+          {
+            "match_basis": "allowlisted document type 'self_employment_statement' matched topics: income",
+            "page": 5,
+            "rule": "At least 20% of residential units must be occupied by individuals or families whose income is at or below 50% of the Area Median Gross Income (AMGI).",
+            "rule_id": "SUPPLEMENTAL-REF-001",
+            "title": "20-50 Occupancy Test"
+          },
+          {
+            "match_basis": "allowlisted document type 'self_employment_statement' matched topics: income",
+            "page": 5,
+            "rule": "At least 40% of residential units must be occupied by individuals or families whose income is at or below 60% of the Area Median Gross Income (AMGI).",
+            "rule_id": "SUPPLEMENTAL-REF-002",
+            "title": "40-60 Occupancy Test"
+          },
+          {
+            "match_basis": "allowlisted document type 'self_employment_statement' matched topics: income, tenant",
+            "page": 6,
+            "rule": "Tenant income must be determined at least annually.",
+            "rule_id": "SUPPLEMENTAL-REF-004",
+            "title": "Annual Income Verification"
+          },
+          {
+            "match_basis": "allowlisted document type 'self_employment_statement' matched topics: income, tenant",
+            "page": 6,
+            "rule": "A tenant who initially qualified remains qualified unless income exceeds 140% of the applicable income limit and the next available comparable unit is rented to an over-income tenant.",
+            "rule_id": "SUPPLEMENTAL-REF-005",
+            "title": "Existing Tenant Income Increase"
+          },
+          {
+            "match_basis": "allowlisted document type 'self_employment_statement' matched topics: income",
+            "page": 7,
+            "rule": "For deep rent skewed projects, the threshold increases from 140% to 170% of the applicable income limit.",
+            "rule_id": "SUPPLEMENTAL-REF-006",
+            "title": "Deep Rent Skewed Threshold"
+          },
+          {
+            "match_basis": "allowlisted document type 'self_employment_statement' matched topics: income",
+            "page": 7,
+            "rule": "At least 15% of low-income units must be occupied by households earning 40% or less of the Area Median Gross Income.",
+            "rule_id": "SUPPLEMENTAL-REF-007",
+            "title": "Deep Rent Skewed Requirement"
+          },
+          {
+            "match_basis": "allowlisted document type 'self_employment_statement' matched topics: income",
+            "page": 7,
+            "rule": "Gross rent for each low-income unit must not exceed 30% of the applicable income limit.",
+            "rule_id": "SUPPLEMENTAL-REF-008",
+            "title": "Deep Rent Gross Rent Limit"
+          },
+          {
+            "match_basis": "allowlisted document type 'self_employment_statement' matched topics: income",
+            "page": 7,
+            "rule": "Gross rent for each low-income unit must not exceed one-half of the average gross rent of comparable unrestricted units.",
+            "rule_id": "SUPPLEMENTAL-REF-009",
+            "title": "Comparable Rent Rule"
+          },
+          {
+            "match_basis": "allowlisted document type 'self_employment_statement' matched topics: income",
+            "page": 9,
+            "rule": "Gross rent must not exceed 30% of the applicable imputed income limitation.",
+            "rule_id": "SUPPLEMENTAL-REF-011",
+            "title": "Rent Restricted Unit"
+          },
+          {
+            "match_basis": "allowlisted document type 'self_employment_statement' matched topics: income",
+            "page": 11,
+            "rule": "A unit remains a low-income unit if occupants originally qualified and the unit continues to be rent restricted.",
+            "rule_id": "SUPPLEMENTAL-REF-012",
+            "title": "Income Increase Treatment"
+          },
+          {
+            "match_basis": "allowlisted document type 'self_employment_statement' matched topics: income, tenant",
+            "page": 11,
+            "rule": "If tenant income exceeds 140% of the limit, the next available comparable unit must be rented to a qualifying low-income household.",
+            "rule_id": "SUPPLEMENTAL-REF-013",
+            "title": "Next Available Unit Rule"
+          },
+          {
+            "match_basis": "allowlisted document type 'self_employment_statement' matched topics: income",
+            "page": 12,
+            "rule": "A project must satisfy the low-income housing requirements by the end of the first year of the credit period.",
+            "rule_id": "SUPPLEMENTAL-REF-014",
+            "title": "Building Qualification Deadline"
+          },
+          {
+            "match_basis": "allowlisted document type 'self_employment_statement' matched topics: income, recertification, tenant",
+            "page": 13,
+            "rule": "The Secretary may waive annual tenant income recertification if the entire building is occupied by low-income tenants.",
+            "rule_id": "SUPPLEMENTAL-REF-016",
+            "title": "Annual Recertification Waiver"
+          },
+          {
+            "match_basis": "allowlisted document type 'self_employment_statement' matched topics: income",
+            "page": 3,
+            "rule": "For non-impacted MTSPs, the income limit may never decline and is the highest value reached during the project's qualifying period.",
+            "rule_id": "SUPPLEMENTAL-REF-017",
+            "title": "MTSP Income Limit Hold Harmless"
+          },
+          {
+            "match_basis": "allowlisted document type 'self_employment_statement' matched topics: income",
+            "page": 3,
+            "rule": "The MTSP 60% income limit is calculated as 1.2 times the MTSP Very Low-Income Limit (VLIL).",
+            "rule_id": "SUPPLEMENTAL-REF-018",
+            "title": "MTSP 60% Income Limit"
+          },
+          {
+            "match_basis": "allowlisted document type 'self_employment_statement' matched topics: income",
+            "page": 4,
+            "rule": "For HUD impacted projects, VLIL equals the greater of the previous impacted VLIL or the FY2008 VLIL adjusted by median family income growth.",
+            "rule_id": "SUPPLEMENTAL-REF-019",
+            "title": "Impacted Project VLIL"
+          },
+          {
+            "match_basis": "allowlisted document type 'self_employment_statement' matched topics: income",
+            "page": 17,
+            "rule": "Area Median Gross Income for MTSP projects after 2008 may not be lower than the previous year's determination.",
+            "rule_id": "SUPPLEMENTAL-REF-020",
+            "title": "Hold Harmless After 2008"
+          },
+          {
+            "match_basis": "allowlisted document type 'self_employment_statement' matched topics: income",
+            "page": 18,
+            "rule": "HUD initially sets the four-person very low-income limit at 50% of Area Median Family Income before applying statutory adjustments.",
+            "rule_id": "SUPPLEMENTAL-REF-021",
+            "title": "Four-Person Income Limit"
+          },
+          {
+            "match_basis": "allowlisted document type 'self_employment_statement' matched topics: income",
+            "page": 18,
+            "rule": "HUD increases very low-income limits when rental housing costs are unusually high relative to median family income.",
+            "rule_id": "SUPPLEMENTAL-REF-022",
+            "title": "High Housing Cost Adjustment"
+          },
+          {
+            "match_basis": "allowlisted document type 'self_employment_statement' matched topics: income",
+            "page": 18,
+            "rule": "HUD reduces very low-income limits in unusually high-income areas subject to statutory minimums.",
+            "rule_id": "SUPPLEMENTAL-REF-023",
+            "title": "High Income Area Adjustment"
+          },
+          {
+            "match_basis": "allowlisted document type 'self_employment_statement' matched topics: income",
+            "page": 19,
+            "rule": "Income limits may not be lower than the state's nonmetropolitan median family income level.",
+            "rule_id": "SUPPLEMENTAL-REF-024",
+            "title": "Nonmetropolitan Minimum"
+          },
+          {
+            "match_basis": "allowlisted document type 'self_employment_statement' matched topics: income",
+            "page": 19,
+            "rule": "For FY2026, annual income limit increases are capped at 10%.",
+            "rule_id": "SUPPLEMENTAL-REF-025",
+            "title": "Annual Increase Cap"
+          }
+        ],
+        "message": "Supplemental matches are available for human review.",
+        "status": "MATCHES_FOUND",
+        "untrusted_document_text_ignored": false
+      },
+      {
+        "document_id": "SAAD-107-D01",
+        "document_type": "government_id",
+        "external_narrative": null,
+        "external_research_used": false,
+        "external_sources": [],
+        "extracted_values_sent_externally": false,
+        "matched_rules": [],
+        "message": "No document-specific supplemental match was found; no rule was guessed.",
+        "status": "NO_DOCUMENT_SPECIFIC_MATCHES",
+        "untrusted_document_text_ignored": false
+      }
+    ]
+  },
   "schema_version": "1.0",
   "source_pack": "saad_extended",
   "source_pack_checksum_manifest_sha256": "7314aa5dc6575cf171b070d2ee81e5c2b0ebd32635d7fdc17eb78c41fc5b5c42",
@@ -5705,9 +6873,11 @@
       "extracted": 8,
       "needs_review": 1
     },
-    "financial_readiness_available": true,
     "households_processed": 7,
-    "ignored_embedded_instruction_flags": 1
+    "ignored_embedded_instruction_flags": 1,
+    "reference_documents_reviewed": 9,
+    "renter_budget_available": true,
+    "supplemental_reference_rules_loaded": 25
   },
   "synthetic_only": true
 }

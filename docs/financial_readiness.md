@@ -1,24 +1,27 @@
-# Transparent financial-readiness engine
+# Optional renter budgeting sandbox
 
-RealDoor transforms fragmented synthetic rental documents into a transparent,
-evidence-linked financial-readiness profile. It describes affordability,
-stability, liquidity, downside scenarios, and document consistency without an
-opaque black-box score or an approval, denial, ranking, or eligibility outcome.
+When explicitly enabled and requested by the renter, RealDoor transforms
+confirmed synthetic rental-document evidence into transparent budgeting
+calculations. It describes affordability, income variation, liquidity, downside
+scenarios, and document consistency without an opaque black-box score or an
+approval, denial, ranking, or eligibility outcome.
 
 ## Safety boundary
 
-`PASS`, `REVIEW`, and `ABSTAIN` are **individual metric statuses only**:
+`CALCULATED`, `NEEDS_REVIEW`, and `INSUFFICIENT_EVIDENCE` are **individual
+calculation statuses only**:
 
-- `PASS`: the metric was calculated and is within its published descriptive or
-  configured range. It does not mean the household passes an application.
-- `REVIEW`: a published descriptive category, configured scenario, discrepancy,
-  or provisional input requires human review. It does not mean denial.
-- `ABSTAIN`: required confirmed evidence is missing, out of scope, or unsuitable
-  for deterministic calculation.
+- `CALCULATED`: the formula ran from sufficient confirmed evidence. It is not an
+  application result.
+- `NEEDS_REVIEW`: a descriptive category, configured scenario, discrepancy, or
+  provisional input needs the renter's or a qualified human's attention. It does
+  not mean denial.
+- `INSUFFICIENT_EVIDENCE`: required confirmed evidence is missing, out of scope,
+  or unsuitable for deterministic calculation.
 
 The response intentionally has no overall status, risk score, recommendation,
-approval probability, or provider-facing acceptance decision. The policy exposes
-`aggregate_score_enabled: false`.
+approval probability, or provider-facing acceptance decision. Provider use is
+prohibited, and the policy exposes `aggregate_score_enabled: false`.
 
 ## Six MVP metrics
 
@@ -94,13 +97,18 @@ SHA-256, and performs no runtime network retrieval.
 The HUD and CFPB sources support transparent, accurate, correctable presentation.
 They do not supply the internal CV, stress, or reconciliation configuration.
 
-## API
+## API and feature gate
 
-- `GET /financial-readiness/policy` exposes the policy version, complete metric
+- `GET /renter-budget/policy` exposes the policy version, complete metric
   thresholds, frozen scope, effective date, and scoring-disabled flag.
-- `POST /financial-readiness/evaluate` returns exactly six typed metric results,
+- `POST /renter-budget/evaluate` returns exactly six typed metric results,
   confidence-aware income scenarios, citations, evidence, formulas, details, and
   human-readable review reasons.
+
+Both routes return `404` when an administrator sets
+`REALDOOR_RENTER_BUDGET_ENABLED=false`. In the complete session journey, renter
+budgeting remains off until the renter passes `include_renter_budget: true` on
+evaluation or export.
 
 A corrected source value is handled by resubmitting the request. Because the
 service is stateless and deterministic, all downstream ratios and scenarios update

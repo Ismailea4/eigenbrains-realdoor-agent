@@ -216,3 +216,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Generated supplemental-reference CLI output (the canonical aggregate is tracked).
+backend/reference_results/
