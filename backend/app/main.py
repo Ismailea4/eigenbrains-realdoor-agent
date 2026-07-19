@@ -17,6 +17,8 @@ from .schemas.financial_readiness import (
 from .services.financial_readiness import FinancialReadinessEngine
 from .services.rules_engine import RulesEngine
 
+from fastapi.middleware.cors import CORSMiddleware
+
 
 app = FastAPI(
     title="RealDoor Application-Readiness Copilot",
@@ -29,6 +31,13 @@ app = FastAPI(
 rules_engine = RulesEngine()
 financial_readiness_engine = FinancialReadinessEngine()
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/rules/scope", response_model=ProgramScope)
 def get_rules_scope() -> ProgramScope:
