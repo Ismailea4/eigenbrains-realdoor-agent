@@ -1,31 +1,90 @@
-# 🎨 Frontend Directory (Lovable)
+# Frontend integration contract
 
-This folder is **OWNED BY Frontend Team** (Lovable).
+The repository does not contain the Lovable application source. This directory
+therefore provides a dependency-free component and the exact API contract the
+frontend team can import without changing its framework or build system.
 
-We have strictly decoupled the frontend from the backend. Lovable generates exports here, and the backend engine makes no assumptions about its internal workings.
+## Optional renter-budget toggle
 
-## 🔑 Critical File Isolation
+`renter_budget_toggle.js` exports an accessible enable/disable switch for the
+risk-management branch. Its user-facing label is **Optional renter budgeting**
+because the feature cannot score, rank, approve, deny, or determine eligibility.
 
-To maintain this separation, the frontend must strictly adhere to these API contract rules:
+The toggle defaults to off, stores no browser data, and adds one boolean to both
+backend requests:
 
-### 1. Upload Protocol (The "Safe" Upload)
+```json
+{
+  "include_renter_budget": true
+}
+```
 
-To protect the system from malicious uploads, all file uploads must follow this strict flow:
+It does not mutate a process-wide backend setting. The server environment flag
+`REALDOOR_RENTER_BUDGET_ENABLED` remains an administrator kill switch. When the
+kill switch is off, the backend returns a typed `DISABLED` stage.
 
-- **Endpoint:** `POST /api/v1/upload`
-- **Body:** `multipart/form-data` containing `file`
-- **Constraint:** The file is processed **ephemerally**. It is **never** saved to disk. Once the session ends (or the user clicks "Delete Session"), the file is instantly wiped from memory.
-- **User Action Required:** Before using the uploaded document, the frontend **MUST** display the extracted data to the user and wait for a **human confirmation/correction** click. The backend will not proceed with any rule calculations until this confirmation is received.
+### Lovable integration
 
-### 2. Data Retrieval (The "Readiness" Status)
+```javascript
+import {
+  checkRenterBudgetAvailability,
+  mountRenterBudgetToggle,
+} from "./renter_budget_toggle.js";
 
-- **Endpoint:** `GET /api/v1/application-readiness/{session_id}`
-- **Logic:** The frontend should poll this endpoint to check the status of uploaded documents.
-- **Output:** Returns the current profile, confirmation status, and any detected gaps (e.g., "Missing pay stub").
+const available = await checkRenterBudgetAvailability({
+  baseUrl: "http://localhost:8000",
+});
 
-### 3. Export / Download (The "Renter-Controlled" Packet)
+const budgetToggle = mountRenterBudgetToggle(
+  document.querySelector("#renter-budget-control"),
+  { available },
+);
 
-- **Endpoint:** `POST /api/v1/export-packet/{session_id}`
-- **Action:** Triggers the generation of the final application-readiness packet.
-- **Constraint:** This is a renter-controlled action. The system should **never** generate this packet without explicit user consent.
-- **Output:** Returns the packet (e.g., JSON/PDF) for immediate download.
+const evaluationPayload = budgetToggle.applyToPayload({
+  as_of_date: "2026-07-19",
+});
+
+await fetch(`/sessions/${sessionId}/evaluate`, {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(evaluationPayload),
+});
+```
+
+Use the same `applyToPayload` call for
+`POST /sessions/{session_id}/export`. The export payload must also contain
+`renter_requested_export: true`.
+
+Open `renter_budget_toggle_demo.html` to inspect the component without a
+frontend build. The demo shows the exact evaluation and export JSON that changes
+when the button is pressed.
+
+## Complete backend journey
+
+1. `POST /sessions` creates the short-lived session.
+2. `POST /sessions/{session_id}/documents` extracts an uploaded synthetic PDF.
+3. The frontend displays every proposed value and its evidence box.
+4. `POST /sessions/{session_id}/confirm` records explicit consent and each
+   `CONFIRM` or `CORRECT` action.
+5. `POST /sessions/{session_id}/evaluate` receives `as_of_date` and the toggle's
+   `include_renter_budget` value.
+6. `POST /sessions/{session_id}/export` runs only after an explicit renter export
+   action and receives the same toggle value.
+7. `DELETE /sessions/{session_id}` immediately removes ephemeral state.
+
+The frontend must never infer an applicant outcome, silently enable budgeting,
+auto-submit a packet, or hide missing/expired/uncertain evidence.
+
+## Accessibility behavior
+
+- Native `<button>` keyboard semantics support Enter and Space.
+- `role="switch"` and `aria-checked` expose the current state.
+- Visible On/Off text means state is not communicated by color alone.
+- The control meets a 44-pixel minimum target and has a visible focus ring.
+- An `aria-live` status explains administrator-disabled and user-enabled states.
+
+## Verification
+
+```powershell
+node --check frontend\renter_budget_toggle.js
+```

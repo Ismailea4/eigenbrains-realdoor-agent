@@ -306,21 +306,21 @@ class FinancialReadinessEngine:
                     message="No positive recurring monthly income is confirmed and traceable.",
                 ),
             ]
-            status = MetricStatus.ABSTAIN
+            status = MetricStatus.INSUFFICIENT_EVIDENCE
             interpretation = "Verified monthly income cannot be calculated from current evidence."
             value: Decimal | None = None
         elif reasons:
-            status = MetricStatus.REVIEW
+            status = MetricStatus.NEEDS_REVIEW
             interpretation = (
                 "Confirmed income is calculated separately from additional income that still "
                 "requires renter confirmation."
             )
             value = scenarios.confirmed_monthly_income
         else:
-            status = MetricStatus.PASS
+            status = MetricStatus.CALCULATED
             interpretation = (
-                "Recurring monthly income is confirmed and traceable. PASS describes this "
-                "metric's evidence state only."
+                "Recurring monthly income is confirmed, traceable, and calculated. "
+                "This describes the metric only, not an applicant outcome."
             )
             value = scenarios.confirmed_monthly_income
 
@@ -333,7 +333,7 @@ class FinancialReadinessEngine:
             formula="sum(confirmed recurring monthly income sources)",
             threshold=None,
             threshold_source="evidence_status_only_no_acceptance_threshold",
-            requires_human_confirmation=status != MetricStatus.PASS,
+            requires_human_confirmation=status != MetricStatus.CALCULATED,
             details=[
                 MetricDetail(
                     key="confirmed_monthly_income",
@@ -437,13 +437,13 @@ class FinancialReadinessEngine:
         ratio = self._ratio(housing_costs, confirmed_income)
         if ratio <= self._policy.housing_burden.lower_burden_max:
             band = "lower_burden"
-            status = MetricStatus.PASS
+            status = MetricStatus.CALCULATED
         elif ratio <= self._policy.housing_burden.elevated_burden_max:
             band = "elevated_burden"
-            status = MetricStatus.REVIEW
+            status = MetricStatus.NEEDS_REVIEW
         else:
             band = "severe_burden"
-            status = MetricStatus.REVIEW
+            status = MetricStatus.NEEDS_REVIEW
 
         return FinancialMetricResult(
             rule_id=MetricId.HOUSING_COST_BURDEN,
@@ -460,7 +460,7 @@ class FinancialReadinessEngine:
             ),
             threshold=self._policy.housing_burden.lower_burden_max,
             threshold_source=self._policy.housing_burden.threshold_source,
-            requires_human_confirmation=status == MetricStatus.REVIEW,
+            requires_human_confirmation=status == MetricStatus.NEEDS_REVIEW,
             details=[
                 MetricDetail(
                     key="housing_burden_band",
@@ -563,13 +563,13 @@ class FinancialReadinessEngine:
             else Decimal("0.00")
         )
         status = (
-            MetricStatus.REVIEW
+            MetricStatus.NEEDS_REVIEW
             if cv > self._policy.income_stability.cv_review_above
-            else MetricStatus.PASS
+            else MetricStatus.CALCULATED
         )
         interpretation = (
             "Income varies above the configured advisory CV threshold and should be reviewed."
-            if status == MetricStatus.REVIEW
+            if status == MetricStatus.NEEDS_REVIEW
             else "Observed income variation is within the configured advisory CV range."
         )
         return FinancialMetricResult(
@@ -581,7 +581,7 @@ class FinancialReadinessEngine:
             formula=f"{standard_deviation} / {mean} = {cv}",
             threshold=self._policy.income_stability.cv_review_above,
             threshold_source=self._policy.income_stability.threshold_source,
-            requires_human_confirmation=status == MetricStatus.REVIEW,
+            requires_human_confirmation=status == MetricStatus.NEEDS_REVIEW,
             details=[
                 MetricDetail(key="observed_months", label="Observed months", value=Decimal(len(amounts)), unit="months"),
                 MetricDetail(key="mean_monthly_income", label="Mean monthly income", value=mean, unit="USD/month"),
@@ -649,7 +649,11 @@ class FinancialReadinessEngine:
         confirmed_total = sum_money(confirmed)
         provisional_total = sum_money(provisional)
         coverage = self._ratio(confirmed_total, housing_costs)
-        status = MetricStatus.REVIEW if provisional_total > 0 else MetricStatus.PASS
+        status = (
+            MetricStatus.NEEDS_REVIEW
+            if provisional_total > 0
+            else MetricStatus.CALCULATED
+        )
         return FinancialMetricResult(
             rule_id=MetricId.LIQUID_RESERVE_COVERAGE,
             status=status,
@@ -662,7 +666,7 @@ class FinancialReadinessEngine:
             formula=f"{format_money(confirmed_total)} / {format_money(housing_costs)} = {coverage}",
             threshold=None,
             threshold_source=self._policy.reserve_coverage.threshold_source,
-            requires_human_confirmation=status == MetricStatus.REVIEW,
+            requires_human_confirmation=status == MetricStatus.NEEDS_REVIEW,
             details=[
                 MetricDetail(key="confirmed_accessible_funds", label="Confirmed accessible liquid funds", value=confirmed_total, unit="USD"),
                 MetricDetail(key="provisional_accessible_funds", label="Provisional accessible funds excluded", value=provisional_total, unit="USD"),
@@ -710,9 +714,9 @@ class FinancialReadinessEngine:
         stressed_income = money(confirmed_income * (Decimal("1") - shock_rate))
         coverage = self._ratio(stressed_income, housing_costs)
         status = (
-            MetricStatus.REVIEW
+            MetricStatus.NEEDS_REVIEW
             if coverage < self._policy.stress_test.coverage_review_below
-            else MetricStatus.PASS
+            else MetricStatus.CALCULATED
         )
         return FinancialMetricResult(
             rule_id=MetricId.DOWNSIDE_AFFORDABILITY,
@@ -721,7 +725,7 @@ class FinancialReadinessEngine:
             unit="stress_coverage_multiple",
             interpretation=(
                 "Configured downside coverage is below 1.0 and depends on optimistic income assumptions."
-                if status == MetricStatus.REVIEW
+                if status == MetricStatus.NEEDS_REVIEW
                 else "Confirmed income covers configured housing costs under the stated downside scenario."
             ) + " This is an advisory scenario, not an eligibility rule.",
             formula=(
@@ -731,7 +735,7 @@ class FinancialReadinessEngine:
             ),
             threshold=self._policy.stress_test.coverage_review_below,
             threshold_source=f"{self._policy.stress_test.threshold_source}:{scenario.basis.value}",
-            requires_human_confirmation=status == MetricStatus.REVIEW,
+            requires_human_confirmation=status == MetricStatus.NEEDS_REVIEW,
             details=[
                 MetricDetail(key="shock_rate", label="Configured income shock", value=shock_rate, unit="rate"),
                 MetricDetail(key="stress_basis", label="Stress scenario basis", text=scenario.basis.value),
@@ -823,7 +827,11 @@ class FinancialReadinessEngine:
             )
 
         maximum_difference = max(comparable_differences)
-        status = MetricStatus.REVIEW if any_review or reasons else MetricStatus.PASS
+        status = (
+            MetricStatus.NEEDS_REVIEW
+            if any_review or reasons
+            else MetricStatus.CALCULATED
+        )
         return FinancialMetricResult(
             rule_id=MetricId.CROSS_DOCUMENT_RECONCILIATION,
             status=status,
@@ -831,13 +839,13 @@ class FinancialReadinessEngine:
             unit="maximum_relative_difference",
             interpretation=(
                 "One or more financial facts require source-level review."
-                if status == MetricStatus.REVIEW
+                if status == MetricStatus.NEEDS_REVIEW
                 else "Compared financial facts are within the configured reconciliation tolerance."
             ) + " Missing information is not treated as financial weakness.",
             formula="abs(max value - min value) / max(abs(values))",
             threshold=tolerance,
             threshold_source=self._policy.reconciliation.threshold_source,
-            requires_human_confirmation=status == MetricStatus.REVIEW,
+            requires_human_confirmation=status == MetricStatus.NEEDS_REVIEW,
             details=details,
             evidence=evidence,
             citations=[],
@@ -858,7 +866,7 @@ class FinancialReadinessEngine:
     ) -> FinancialMetricResult:
         return FinancialMetricResult(
             rule_id=metric_id,
-            status=MetricStatus.ABSTAIN,
+            status=MetricStatus.INSUFFICIENT_EVIDENCE,
             value=None,
             unit=None,
             interpretation=interpretation,

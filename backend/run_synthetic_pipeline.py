@@ -31,6 +31,7 @@ OUTPUT_PATH = (
 if str(REPOSITORY_ROOT) not in sys.path:
     sys.path.insert(0, str(REPOSITORY_ROOT))
 
+from backend.app.schemas.aggregate import GlobalAggregateResponse  # noqa: E402
 from backend.app.schemas.calculator import (  # noqa: E402
     ConfirmedIncomeInput,
     EvidenceReference,
@@ -45,6 +46,7 @@ from backend.app.services.rules_engine import (  # noqa: E402
     EXPECTED_RULE_YEAR,
     RulesEngine,
 )
+from backend.references_checker import build_aggregate_reference_review  # noqa: E402
 
 
 MONEY = Decimal("0.01")
@@ -322,6 +324,7 @@ def _run_financial_readiness(
 def run_pipeline() -> dict[str, Any]:
     gold_rows = _load_gold()
     documents: list[dict[str, Any]] = []
+    all_extractions: list[DocumentExtraction] = []
     grouped: dict[str, list[DocumentExtraction]] = defaultdict(list)
     confirmation_count = 0
     for gold in sorted(gold_rows, key=lambda item: item["file_name"]):
@@ -330,6 +333,7 @@ def run_pipeline() -> dict[str, Any]:
         confirmation_count += int(
             confirmation["all_allowlisted_fields_confirmed_for_demo"]
         )
+        all_extractions.append(extraction)
         grouped[gold["household_id"]].append(extraction)
         documents.append(
             {
@@ -341,19 +345,19 @@ def run_pipeline() -> dict[str, Any]:
         )
 
     households = []
-    risk_available = False
+    renter_budget_available = False
     for household_id in sorted(grouped):
         financial = _run_financial_readiness(household_id, grouped[household_id])
-        risk_available |= financial is not None
+        renter_budget_available |= financial is not None
         households.append(
             {
                 "household_id": household_id,
                 "document_ids": sorted(item.document_id for item in grouped[household_id]),
                 "rules_and_math": _run_rules(household_id, grouped[household_id]),
-                "financial_readiness": financial
+                "renter_budget": financial
                 or {
                     "status": "NOT_AVAILABLE",
-                    "reason": "Financial-readiness module is not present on this branch.",
+                    "reason": "The optional renter-budget module is not present on this branch.",
                 },
             }
         )
@@ -367,10 +371,11 @@ def run_pipeline() -> dict[str, Any]:
     checksum = hashlib.sha256(
         (FIXTURE_ROOT / "checksums.sha256").read_bytes()
     ).hexdigest()
-    return {
+    reference_review = build_aggregate_reference_review(all_extractions)
+    payload = {
         "schema_version": "1.0",
         "pipeline_variant": (
-            "rules_and_financial_readiness" if risk_available else "rules_only"
+            "rules_and_renter_budget" if renter_budget_available else "rules_only"
         ),
         "source_pack": "saad_extended",
         "source_pack_checksum_manifest_sha256": checksum,
@@ -386,11 +391,17 @@ def run_pipeline() -> dict[str, Any]:
             "documents_confirmed_against_synthetic_gold": confirmation_count,
             "extraction_status_counts": dict(sorted(status_counts.items())),
             "ignored_embedded_instruction_flags": security_flags,
-            "financial_readiness_available": risk_available,
+            "renter_budget_available": renter_budget_available,
+            "reference_documents_reviewed": reference_review.documents_reviewed,
+            "supplemental_reference_rules_loaded": (
+                reference_review.catalog.rules_loaded
+            ),
         },
         "documents": documents,
         "households": households,
+        "reference_review": reference_review.model_dump(mode="json"),
     }
+    return GlobalAggregateResponse.model_validate(payload).model_dump(mode="json")
 
 
 def main() -> None:

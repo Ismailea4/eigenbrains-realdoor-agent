@@ -20,9 +20,9 @@ class VerificationStatus(str, Enum):
 class MetricStatus(str, Enum):
     """Metric-level status only; never an applicant or eligibility outcome."""
 
-    PASS = "PASS"
-    REVIEW = "REVIEW"
-    ABSTAIN = "ABSTAIN"
+    CALCULATED = "CALCULATED"
+    NEEDS_REVIEW = "NEEDS_REVIEW"
+    INSUFFICIENT_EVIDENCE = "INSUFFICIENT_EVIDENCE"
 
 
 class MetricId(str, Enum):

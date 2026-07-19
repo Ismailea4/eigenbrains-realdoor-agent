@@ -9,12 +9,20 @@
   *Challenge 03 (Powered by RealPage)*
 </div>
 
-**Transparent Financial Readiness:** RealDoor transforms fragmented synthetic
-rental documents into an evidence-linked financial-readiness profile that
-describes affordability, income stability, accessible liquidity, downside
-scenarios, and cross-document consistency. Every metric exposes its formula,
-inputs, source evidence, policy threshold, and uncertainty; the system produces
-no aggregate applicant score or housing decision.
+**Optional Renter Budgeting Sandbox:** When explicitly enabled and requested by
+the renter, RealDoor can turn confirmed synthetic evidence into transparent
+budget calculations for affordability, income variation, accessible liquidity,
+downside scenarios, and cross-document consistency. Every metric exposes its
+formula, inputs, source evidence, policy threshold, and uncertainty. Each renter
+session leaves this stage off until explicitly requested; administrators can
+also disable the module entirely. It is prohibited for provider screening and
+never produces an aggregate applicant score or housing decision.
+
+`GET /pipeline/aggregate` returns the complete synthetic backend run as one
+structured JSON object: extraction and evidence, synthetic confirmation,
+deterministic rules/math, supplemental-reference matches, prompt-injection
+flags, and the optional renter-budget results. The baseline Yazid branch returns
+the same shared structure with the renter-budget stage marked unavailable.
 
 ---
 
