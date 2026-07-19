@@ -41,3 +41,17 @@ See `docs/rules_and_math.md` for contracts and examples.
 ```powershell
 .\.venv\Scripts\python.exe -m unittest discover -s backend\tests -v
 ```
+
+## Synthetic end-to-end artifact
+
+Run the generated Saad fixture pack through extraction, synthetic-gold
+confirmation, and rules/math:
+
+```powershell
+.\.venv\Scripts\python.exe backend\run_synthetic_pipeline.py
+```
+
+The command writes one auditable JSON file to
+`backend/pipeline_results/synthetic_pipeline_output.json`. On the dedicated
+risk-management branch, the same command also includes the six advisory
+financial-readiness metrics for every synthetic household.
