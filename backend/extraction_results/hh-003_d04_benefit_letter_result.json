@@ -1,0 +1,90 @@
+{
+  "document_id": "HH-003-D04",
+  "document_type": "benefit_letter",
+  "page_count": 1,
+  "status": "extracted",
+  "structured_data": {
+    "document_type": "benefit_letter",
+    "person_name": {
+      "field": "person_name",
+      "value": "Avery Moss",
+      "confidence": 0.99,
+      "evidence": {
+        "page": 1,
+        "bbox": [
+          40.0,
+          652.01,
+          92.23,
+          665.75
+        ],
+        "bbox_units": "pdf_points_bottom_left_origin",
+        "text": "Avery Moss",
+        "engine": "pdf_text",
+        "confidence": 0.99
+      },
+      "confirmed": false,
+      "reusable": false
+    },
+    "document_date": {
+      "field": "document_date",
+      "value": "2026-06-13",
+      "confidence": 0.99,
+      "evidence": {
+        "page": 1,
+        "bbox": [
+          360.0,
+          652.01,
+          411.14,
+          665.75
+        ],
+        "bbox_units": "pdf_points_bottom_left_origin",
+        "text": "2026-06-13",
+        "engine": "pdf_text",
+        "confidence": 0.99
+      },
+      "confirmed": false,
+      "reusable": false
+    },
+    "monthly_benefit": {
+      "field": "monthly_benefit",
+      "value": 850,
+      "confidence": 0.99,
+      "evidence": {
+        "page": 1,
+        "bbox": [
+          40.0,
+          495.81,
+          90.6,
+          515.05
+        ],
+        "bbox_units": "pdf_points_bottom_left_origin",
+        "text": "$850.00",
+        "engine": "pdf_text",
+        "confidence": 0.99
+      },
+      "confirmed": false,
+      "reusable": false
+    },
+    "benefit_frequency": {
+      "field": "benefit_frequency",
+      "value": "monthly",
+      "confidence": 0.99,
+      "evidence": {
+        "page": 1,
+        "bbox": [
+          280.0,
+          497.01,
+          315.01,
+          510.75
+        ],
+        "bbox_units": "pdf_points_bottom_left_origin",
+        "text": "monthly",
+        "engine": "pdf_text",
+        "confidence": 0.99
+      },
+      "confirmed": false,
+      "reusable": false
+    }
+  },
+  "warnings": []
+}
