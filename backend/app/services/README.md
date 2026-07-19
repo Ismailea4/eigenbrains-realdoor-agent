@@ -1,6 +1,6 @@
 # Services Directory
 
-Contains the core algorithmic logic. This domain is strictly isolated into distinct engineering responsibilities.
+Core algorithmic logic is separated by responsibility:
 
 ## Files
 - `extractor.py`: Deterministic in-memory PDF parser. PyMuPDF handles text-layer
@@ -14,3 +14,14 @@ Contains the core algorithmic logic. This domain is strictly isolated into disti
 - `financial_readiness.py`: Six deterministic, evidence-linked financial indicators
   with versioned policy, confidence separation, explicit abstention, and no
   aggregate applicant score or decision.
+- `extractor.py`: deterministic, in-memory PDF parsing with PyMuPDF and an
+  optional Tesseract adapter. It returns only allowlisted, unconfirmed fields
+  with evidence boxes and ignored embedded-instruction flags.
+- `rules_engine.py`: offline, checksum-pinned rules, citations, frozen-scope
+  enforcement, and explicit abstention. Runtime network or model output cannot
+  change the rules.
+- `calculator.py`: exact deterministic money calculations with no LLM or
+  probabilistic decisioning.
+- `financial_readiness.py`: six deterministic, evidence-linked financial
+  indicators with versioned policy, confidence separation, explicit
+  abstention, and no aggregate applicant score or decision.

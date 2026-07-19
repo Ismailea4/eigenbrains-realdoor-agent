@@ -1,5 +1,7 @@
 """Public service exports."""
+"""Deterministic services exposed by the backend package."""
 
+from .financial_readiness import FinancialReadinessEngine, RiskPolicyIntegrityError
 from .extractor import (
     DocumentExtractionError,
     NonSyntheticDocumentError,
@@ -21,7 +23,13 @@ __all__ = [
     "UnsupportedDocumentError",
     "extract_document",
     "extract_documents",
+    "DocumentExtractionError",
     "FinancialReadinessEngine",
+    "NonSyntheticDocumentError",
+    "OCRUnavailableError",
     "RiskPolicyIntegrityError",
     "RulesEngine",
+    "UnsupportedDocumentError",
+    "extract_document",
+    "extract_documents",
 ]

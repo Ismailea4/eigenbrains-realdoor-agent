@@ -23,7 +23,7 @@ from typing import Callable, Iterable, Sequence
 
 import fitz
 
-from app.schemas.profile import (
+from ..schemas.profile import (
     ApplicationSummaryData,
     BankDepositStatementData,
     BenefitLetterData,
